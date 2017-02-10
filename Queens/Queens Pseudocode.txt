@@ -1,0 +1,16 @@
+board: int 2D array
+0 represents unoccupied, unthreatened space. -1 represents a queen, and int higher represents the number of queens threatening the position
+
+//checks if the current board position is a valid solution
+public boolean checkQueen(int[][] board){
+	//returns true if the current board position is a valid function
+}
+
+//cycles through the array from the bottom left corner and places the queen at the first available location
+public void placeQueen(r, c){
+	//
+}
+
+public void recurQueen: places queens at the first available spaces until it has placed n queens or cannot place any more queens, recursively backtracking if it cant place a queen and placing it in a different location
+
+public int solutionCount: runs recurQueen to find a solution (must divide by 4), keeps a counter to track every time recurqueen comes up with a solution. Recurqueen is modified so that it only ends when it has tried every possible orientation for queens on the board (n! for board size n)
