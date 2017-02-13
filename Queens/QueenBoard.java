@@ -1,21 +1,36 @@
 public class QueenBoard{
 
     //INSTANCE VARIABLES
-    private int[][]board;
+    private int[][] board;
 
     private int solutionCount;
 
-    private int size = board.length;
+    private int size;
 
     // CONSTRUCTOR
-    public QueenBoard(int size){
-	if(size < 1){
+    public QueenBoard(int size1){
+
+	if(size1 < 1){
 	    throw new IllegalArgumentException();
 	}
+
+	size = size1;
 	
-	board = new int[size][size];
+	board = new int[size1][size1];
+
+	clear(board);
     }
 
+    //METHODS
+
+    //sets every location on the board to 0;
+    public void clear(int[][] thing){
+	for(int r = 0; r < size; r++){
+	    for(int c = 0; c < size; c++){
+		thing[c][r] = 0;
+	    }
+	}
+    }
     /**
      *precondition: board is filled with 0's only.
      *@return false when the board is not solveable. true otherwise.
@@ -31,27 +46,46 @@ public class QueenBoard{
 	    return false;
 	}
 
+	if(size == 1){
+	    return true;
+	}
+
 	return solveH(0);
     }
     
     //
     private boolean solveH(int col){
-
-	if(board[size - 1] != 0){
-	    return false
+	
+	for(int row = 0; row < col; row++){
+	    if(board[col][row] == 0){
+		addQueen(row, col);
+		return true;
+	    }
 	}
 
-	addQueen[size - [col
+	return false;
     }
 
     //
-    private void addQueen(r, c){
+    private void addQueen(int r, int c){
 	board[r][c] = -1;
+
+	for(int i = 0; i < size; i++){
+	    if(board[i][c] != -1){
+		board[i][c] = board[i][c] + 1;
+	    }
+	}
+	
+	for(int i = 0; i < size; i++){
+	    if(board[r][i] != -1){
+		board[r][i] = board[r][i] + 1;
+	    }	
+	
     }
     
     //
-    private void removeQueen(r, c){
-	board[r][c] == 0;
+    private void removeQueen(int r, int c){
+	board[r][c] = 0;
     }
     
     /**
@@ -69,7 +103,34 @@ public class QueenBoard{
      *and all nunbers that represent queens are replaced with 'Q' 
      *all others are displayed as underscores '_'
      */
-    public String toString(){
-    	return "";
+     public String toString(){
+	String str = "";
+	
+	for(int p = 0; p < size; p++){
+	    for(int i = 0; i < size; i++){
+		if(board[p][i] == -1){
+		    str = str + " " + 'Q'; 
+		}
+		if(board[p][i] == 0){
+		    str = str + " " + '-'; 
+		}
+		if(board[p][i] > 0){
+		    str = str + " " + '+'; 
+		}
+	    }
+	    str = str + '\n';
+	}
+	str = "|" + '\n' + str + '\n' + "|";
+	return str;
     }
+
+    //MAIN
+    public static void main(String[]args){
+	QueenBoard test = new QueenBoard(8);
+
+	test.addQueen(4, 6);
+	
+	System.out.println(test.toString());
+    }
+    //END MAIN
 }

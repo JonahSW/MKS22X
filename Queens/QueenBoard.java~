@@ -14,20 +14,8 @@ public class QueenBoard{
 	}
 	
 	board = new int[size][size];
-
-	clear(board);
     }
 
-    //METHODS
-
-    //sets every location on the board to 0;
-    public void clear(int[][] thing){
-	for(int r = 0; r < size; r++){
-	    for(int c = 0; c < size; c++){
-		thing[c][r] = 0;
-	    }
-	}
-    }
     /**
      *precondition: board is filled with 0's only.
      *@return false when the board is not solveable. true otherwise.
