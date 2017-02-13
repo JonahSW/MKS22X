@@ -1,3 +1,5 @@
+ import static java. lang. Math.*;
+
 public class QueenBoard{
 
     //INSTANCE VARIABLES
@@ -67,9 +69,18 @@ public class QueenBoard{
     }
 
     //
+    //TESTED
     private void addQueen(int r, int c){
-	board[r][c] = -1;
+	if((r >= size) || (c >= size)){
+	    throw new IllegalArgumentException();
+	}
+	
+	if(board[r][c] != 0){
+	    System.out.println("Unable to comply");
+	    return;
+	}
 
+	//Horizontal and vertical
 	for(int i = 0; i < size; i++){
 	    if(board[i][c] != -1){
 		board[i][c] = board[i][c] + 1;
@@ -80,11 +91,73 @@ public class QueenBoard{
 	    if(board[r][i] != -1){
 		board[r][i] = board[r][i] + 1;
 	    }	
+	}
+
+	//Diagonals
+        for(int i = 1; i <= min(r, c); i++){
+	    board[r - i][c - i] = board[r - i][c - i] + 1;
+	}
+
+	for(int i = 1; i < min(size - r, size - c); i++){
+	    board[r + i][c + i] = board[r + i][c + i] + 1;
+	}
+
+	for(int i = 1; i < min(r + 1, size - c); i++){
+	    board[r - i][c + i] = board[r - i][c + i] + 1;
+	}
+
+	for(int i = 1; i < min(size - r, c + 1); i++){
+	    board[r + i][c - i] = board[r + i][c - i] + 1;
+	}
+	
+	//adds the queen
+	board[r][c] = -1;
 	
     }
     
     //
+    //TESTED
     private void removeQueen(int r, int c){
+		if((r >= size) || (c >= size)){
+	    throw new IllegalArgumentException();
+	}
+	
+	if(board[r][c] != -1){
+	    System.out.println("Unable to comply");
+	    return;
+	}
+
+	//Horizontal and vertical
+	for(int i = 0; i < size; i++){
+	    if(board[i][c] != -1){
+		board[i][c] = board[i][c] - 1;
+	    }
+	}
+	
+	for(int i = 0; i < size; i++){
+	    if(board[r][i] != -1){
+		board[r][i] = board[r][i] - 1;
+	    }	
+	}
+
+	//Diagonals
+        for(int i = 1; i <= min(r, c); i++){
+	    board[r - i][c - i] = board[r - i][c - i] - 1;
+	}
+
+	for(int i = 1; i < min(size - r, size - c); i++){
+	    board[r + i][c + i] = board[r + i][c + i] - 1;
+	}
+
+	for(int i = 1; i < min(r + 1, size - c); i++){
+	    board[r - i][c + i] = board[r - i][c + i] - 1;
+	}
+
+	for(int i = 1; i < min(size - r, c + 1); i++){
+	    board[r + i][c - i] = board[r + i][c - i] - 1;
+	}
+
+	//removes the queen
 	board[r][c] = 0;
     }
     
@@ -103,18 +176,19 @@ public class QueenBoard{
      *and all nunbers that represent queens are replaced with 'Q' 
      *all others are displayed as underscores '_'
      */
+    //TESTED
      public String toString(){
 	String str = "";
 	
 	for(int p = 0; p < size; p++){
 	    for(int i = 0; i < size; i++){
-		if(board[p][i] == -1){
+		if(board[i][p] == -1){
 		    str = str + " " + 'Q'; 
 		}
-		if(board[p][i] == 0){
+		if(board[i][p] == 0){
 		    str = str + " " + '-'; 
 		}
-		if(board[p][i] > 0){
+		if(board[i][p] > 0){
 		    str = str + " " + '+'; 
 		}
 	    }
@@ -122,15 +196,41 @@ public class QueenBoard{
 	}
 	str = "|" + '\n' + str + '\n' + "|";
 	return str;
-    }
+     }
 
+    //Returns and prints out the int array of board
+    //TESTED
+    public String toStringInt(){
+	String str = "";
+	
+	for(int p = 0; p < size; p++){
+	    for(int i = 0; i < size; i++){
+		str = str + board[i][p] + " ";
+	    }
+	    str = str + '\n';
+	}
+	str = "|" + '\n' + str + '\n' + "|";
+	return str;
+    }
+    
     //MAIN
     public static void main(String[]args){
 	QueenBoard test = new QueenBoard(8);
 
-	test.addQueen(4, 6);
+        test.addQueen(0, 1);
+	test.addQueen(4, 7);
+	test.addQueen(3, 5);
+	test.addQueen(6, 0);
+
+	test.removeQueen(3, 5);
+	test.removeQueen(6, 0);
+	test.removeQueen(4, 7);
+	test.removeQueen(0, 1);
+	
+	
 	
 	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
     }
     //END MAIN
 }
