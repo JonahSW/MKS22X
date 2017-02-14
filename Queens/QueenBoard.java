@@ -57,15 +57,19 @@ public class QueenBoard{
     
     //
     private boolean solveH(int col){
-	
-	for(int row = 0; row < col; row++){
-	    if(board[col][row] == 0){
-		addQueen(row, col);
+        if(col == size){
+	    return false;
+	}
+
+	for(int i = 0; i >= size; i++){
+	    if(board[col][i] == 0){
+		addQueen(col, i);
 		return true;
 	    }
 	}
-
-	return false;
+	
+	return solveH(col + 1);
+	
     }
 
     //
@@ -168,6 +172,22 @@ public class QueenBoard{
 
      */
 
+    //
+    public static int factorial(int n){
+	int sum = 1;
+
+	if(n == 0){
+	    return 0;
+	}
+
+	for(int i = 1; i <= n; i++){
+	    sum = i * sum;
+	}
+
+	return sum;
+    }
+    
+    //
     public int getSolutionCount(){
     	return -1;
     }
@@ -217,16 +237,14 @@ public class QueenBoard{
     public static void main(String[]args){
 	QueenBoard test = new QueenBoard(8);
 
-        test.addQueen(0, 1);
-	test.addQueen(4, 7);
-	test.addQueen(3, 5);
-	test.addQueen(6, 0);
-
-	test.removeQueen(3, 5);
-	test.removeQueen(6, 0);
-	test.removeQueen(4, 7);
-	test.removeQueen(0, 1);
+	System.out.println(factorial(0));
+	System.out.println(factorial(1));
+	System.out.println(factorial(2));
+	System.out.println(factorial(3));
+	System.out.println(factorial(4));
+	System.out.println(factorial(5));
 	
+	test.solveH(0);
 	
 	
 	System.out.println(test.toString());
