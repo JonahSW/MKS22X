@@ -61,14 +61,14 @@ public class QueenBoard{
 	    return false;
 	}
 
-	for(int i = 0; i >= size; i++){
+	for(int i = 0; i < size; i++){	    
 	    if(board[col][i] == 0){
 		addQueen(col, i);
-		return true;
+		return solveH(col + 1);
 	    }
 	}
 	
-	return solveH(col + 1);
+	return false;
 	
     }
 
@@ -77,43 +77,35 @@ public class QueenBoard{
     private void addQueen(int r, int c){
 	if((r >= size) || (c >= size)){
 	    throw new IllegalArgumentException();
-	}
-	
+	}	
 	if(board[r][c] != 0){
-	    System.out.println("Unable to comply");
+	    System.out.println("Cannot add Queen to " + r + ", " + c);
 	    return;
 	}
-
 	//Horizontal and vertical
 	for(int i = 0; i < size; i++){
 	    if(board[i][c] != -1){
 		board[i][c] = board[i][c] + 1;
 	    }
 	}
-	
 	for(int i = 0; i < size; i++){
 	    if(board[r][i] != -1){
 		board[r][i] = board[r][i] + 1;
 	    }	
 	}
-
 	//Diagonals
         for(int i = 1; i <= min(r, c); i++){
 	    board[r - i][c - i] = board[r - i][c - i] + 1;
 	}
-
 	for(int i = 1; i < min(size - r, size - c); i++){
 	    board[r + i][c + i] = board[r + i][c + i] + 1;
 	}
-
 	for(int i = 1; i < min(r + 1, size - c); i++){
 	    board[r - i][c + i] = board[r - i][c + i] + 1;
 	}
-
 	for(int i = 1; i < min(size - r, c + 1); i++){
 	    board[r + i][c - i] = board[r + i][c - i] + 1;
 	}
-	
 	//adds the queen
 	board[r][c] = -1;
 	
@@ -122,45 +114,37 @@ public class QueenBoard{
     //
     //TESTED
     private void removeQueen(int r, int c){
-		if((r >= size) || (c >= size)){
+	if((r >= size) || (c >= size)){
 	    throw new IllegalArgumentException();
 	}
-	
 	if(board[r][c] != -1){
-	    System.out.println("Unable to comply");
+	    System.out.println("Cannot remove Queen from " + r + ", " + c);
 	    return;
 	}
-
 	//Horizontal and vertical
 	for(int i = 0; i < size; i++){
 	    if(board[i][c] != -1){
 		board[i][c] = board[i][c] - 1;
 	    }
 	}
-	
 	for(int i = 0; i < size; i++){
 	    if(board[r][i] != -1){
 		board[r][i] = board[r][i] - 1;
 	    }	
 	}
-
 	//Diagonals
         for(int i = 1; i <= min(r, c); i++){
 	    board[r - i][c - i] = board[r - i][c - i] - 1;
 	}
-
 	for(int i = 1; i < min(size - r, size - c); i++){
 	    board[r + i][c + i] = board[r + i][c + i] - 1;
 	}
-
 	for(int i = 1; i < min(r + 1, size - c); i++){
 	    board[r - i][c + i] = board[r - i][c + i] - 1;
 	}
-
 	for(int i = 1; i < min(size - r, c + 1); i++){
 	    board[r + i][c - i] = board[r + i][c - i] - 1;
 	}
-
 	//removes the queen
 	board[r][c] = 0;
     }
@@ -172,7 +156,7 @@ public class QueenBoard{
 
      */
 
-    //
+    //TESTED
     public static int factorial(int n){
 	int sum = 1;
 
@@ -235,14 +219,7 @@ public class QueenBoard{
     
     //MAIN
     public static void main(String[]args){
-	QueenBoard test = new QueenBoard(8);
-
-	System.out.println(factorial(0));
-	System.out.println(factorial(1));
-	System.out.println(factorial(2));
-	System.out.println(factorial(3));
-	System.out.println(factorial(4));
-	System.out.println(factorial(5));
+	QueenBoard test = new QueenBoard(4);
 	
 	test.solveH(0);
 	
