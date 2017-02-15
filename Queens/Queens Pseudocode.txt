@@ -6,11 +6,43 @@ public boolean checkQueen(int[][] board){
 	//returns true if the current board position is a valid function
 }
 
-//cycles through the array from the bottom left corner and places the queen at the first available location
-public void placeQueen(r, c){
-	//
+//adds a queen to the board
+public void addQueen(r, c){
+	//cycles through the array from the bottom left corner and places the queen at the first available location
 }
 
+//removes a queen from the board
+public void removequeen(r, c){
+       //removes a queen from the board and removes one level of threat from each square the queen threatened
+}
+
+//places the queen in a valid location
+public void placeQuueen(c){
+       //cycles through 
+}
+
+//finds a good solution for the board
+public void solve(){
+       
+}
+
+//finds all valid solutions for the given board
+public int countSolutions(){
+       
+}
+
+//
+toStringInt(){
+
+}
+
+//
+toString(){
+
+}
+
+/*
 public void recurQueen: places queens at the first available spaces until it has placed n queens or cannot place any more queens, recursively backtracking if it cant place a queen and placing it in a different location
 
 public int solutionCount: runs recurQueen to find a solution (must divide by 4), keeps a counter to track every time recurqueen comes up with a solution. Recurqueen is modified so that it only ends when it has tried every possible orientation for queens on the board (n! for board size n)
+*/

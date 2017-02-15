@@ -1,4 +1,4 @@
- import static java. lang. Math.*;
+import static java. lang. Math.*;
 
 public class QueenBoard{
 
@@ -9,16 +9,18 @@ public class QueenBoard{
 
     private int size;
 
-    // CONSTRUCTOR
-    public QueenBoard(int size1){
+    private int tracker;
 
-	if(size1 < 1){
+    // CONSTRUCTOR
+    public QueenBoard(int size){
+
+	this.size = size;
+	
+	if(size < 1){
 	    throw new IllegalArgumentException();
 	}
-
-	size = size1;
 	
-	board = new int[size1][size1];
+	board = new int[size][size];
 
 	clear(board);
     }
@@ -52,6 +54,8 @@ public class QueenBoard{
 	    return true;
 	}
 
+	tracker = 0;
+	
 	return solveH(0);
     }
     
@@ -61,15 +65,18 @@ public class QueenBoard{
 	    return false;
 	}
 
-	for(int i = 0; i < size; i++){	    
+	for(int i = tracker + 1; i < size; i++){	    
 	    if(board[col][i] == 0){
 		addQueen(col, i);
+		tracker = i;
 		return solveH(col + 1);
 	    }
 	}
-	
-	return false;
-	
+
+	removeQueen(col, tracker);
+	tracker = 0;
+
+	return solveH(col - 1)
     }
 
     //
@@ -219,9 +226,9 @@ public class QueenBoard{
     
     //MAIN
     public static void main(String[]args){
-	QueenBoard test = new QueenBoard(4);
+	QueenBoard test = new QueenBoard(8);
 	
-	test.solveH(0);
+	test.solve();
 	
 	
 	System.out.println(test.toString());
