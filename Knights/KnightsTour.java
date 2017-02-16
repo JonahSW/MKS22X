@@ -12,7 +12,7 @@ public class KnightsTour{
     private int cols;
 
     // CONSTRUCTOR
-    public QueenBoard(int rows, int cols){
+    public KnightBoard(int rows, int cols){
 
 	if((rows < 1) || (cols < 1)){
 	    throw new IllegalArgumentException();
@@ -29,6 +29,28 @@ public class KnightsTour{
 
     //METHODS
 
+    //
+    private void addKnight(int row, int col){
+	
+    }
+
+    //
+    private void removeKnight(int row, int col){
+
+    }
+
+    //Returns true if the knight can be moved to this location
+    //(it isn't occupied or visited)
+    private boolean isGoodSpot(int row, int col){
+
+    }
+
+    //recursively places knights until a tour is reached or all
+    //solutions have failed
+    private void tourKnight(){
+
+    }
+    
     //TESTED
      public String toString(){
 	String str = "";
