@@ -29,6 +29,15 @@ public class KnightsTour{
 
     //METHODS
 
+    //sets every location on the board to 0;
+    public void clear(int[][] thing){
+	for(int r = 0; r < size; r++){
+	    for(int c = 0; c < size; c++){
+		thing[c][r] = 0;
+	    }
+	}
+    }
+    
     //
     private void addKnight(int row, int col){
 	
@@ -43,6 +52,7 @@ public class KnightsTour{
     //(it isn't occupied or visited)
     private boolean isGoodSpot(int row, int col){
 
+	return false;
     }
 
     //recursively places knights until a tour is reached or all
@@ -90,6 +100,12 @@ public class KnightsTour{
     
     //MAIN
     public static void main(String[]args){
+	KnightBoard test = new KnightBoard(5, 5);
+
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
 	
-    //END MAIN
+	//END MAIN
+    }
+
 }

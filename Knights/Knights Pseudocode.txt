@@ -1,20 +1,32 @@
 //Constructor
-public KnightBoard(int startingRows,int startingCols) 
+public KnightBoard(int startingRows,int startingCols){
+       //board of ints, with incrementing numbers representing the path of the knight
+}
 
-public String toString() //blank if you never called solve or when there is no solution
+public String toString(){
+       //blank if you never called solve or when there is no solution
+}
 
-public String toStringInt() //blank if you never called solve or when there is no solution
+public String toStringInt(){
+       //blank if you never called solve or when there is no solution
+}
 
 public void tourKnight(){
+       //calls solveH.
+}
 
+public boolean isValid(int r, int c){
+       //cheacks if a location is available for a knight to be added (i.e. it is on the board and not already visited)
 }
 
 public void addKnight(int r, int c){
-
+       //adds a knight to a given location, updating the current board
 }
 
 public void removeKnight(int r, int c){
-
+       //removes a knight from a given location, and updates the current board
 }
 
-private boolean solveH(int row ,int col, int level) // level is the # of the knight
+private boolean solveH(int row ,int col, int level){
+	//level is the # of the knight. recursively places knights in available locations. If there is no available location to add the knight, backtrack to a good location
+}
