@@ -18,17 +18,17 @@ public void removequeen(r, c){
 
 //places the queen in a valid location
 public void placeQuueen(c){
-       //cycles through 
+       //cycles through a column and places the queen in a valid location, then calls itself on the next column over 
 }
 
 //finds a good solution for the board
-public void solve(){
-       
+public boolean void solve(){
+       //uses the placeQueen method as a helper to find a good solution, and then return true when it finds one and updates teh board
 }
 
 //finds all valid solutions for the given board
 public int countSolutions(){
-       
+       calls placeQueens the number of times there are permutations of the board, and counts all of the solutions it finds
 }
 
 //

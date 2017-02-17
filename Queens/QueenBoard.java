@@ -11,6 +11,10 @@ public class QueenBoard{
 
     private int tracker;
 
+    private boolean moved;
+    
+    private int solutionTracker;
+
     // CONSTRUCTOR
     public QueenBoard(int size){
 
@@ -61,22 +65,29 @@ public class QueenBoard{
     
     //
     private boolean solveH(int col){
-        if(col == size){
-	    return false;
-	}
 
-	for(int i = tracker + 1; i < size; i++){	    
+	if(col == size){
+	    return false;
+	}	
+      
+	for(int i = 0; i < size; i++){
 	    if(board[col][i] == 0){
-		addQueen(col, i);
 		tracker = i;
+		addQueen(col, i);
 		return solveH(col + 1);
 	    }
 	}
 
-	removeQueen(col, tracker);
-	tracker = 0;
+	for(int i = tracker; i < size; i++){
+	    if(board[col][i] == 0){
+		tracker = i;
+		addQueen(col, i);
+		return solveH(col + 1);
+	    }
+	}
 
-	return solveH(col - 1)
+	return solveH(col);
+	
     }
 
     //
