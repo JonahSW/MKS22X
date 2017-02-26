@@ -10,8 +10,6 @@ public class QueenBoard{
     private int size;
 
     private int tracker;
-
-    private boolean moved;
     
     private int solutionTracker;
 
@@ -39,6 +37,7 @@ public class QueenBoard{
 	    }
 	}
     }
+    
     /**
      *precondition: board is filled with 0's only.
      *@return false when the board is not solveable. true otherwise.
@@ -48,7 +47,8 @@ public class QueenBoard{
      *final configuration of the board after adding 
      *all n queens. Uses solveH
      */
-    //
+    //Solves the board, leaving it in the solved state
+    //TESTED
     public boolean solve(){
 	if((size == 2) || (size == 3)){
 	    return false;
@@ -63,34 +63,28 @@ public class QueenBoard{
 	return solveH(0);
     }
     
-    //
+    //Helper function that places a queen in a column, and then moves on to
+    //the next column.
+    //TESTED
     private boolean solveH(int col){
-
 	if(col == size){
-	    return false;
+	    return true;
 	}	
       
-	for(int i = 0; i < size; i++){
-	    if(board[col][i] == 0){
-		tracker = i;
-		addQueen(col, i);
-		return solveH(col + 1);
+        for(int i = 0; i < size; i++){
+	    if(board[i][col] == 0){
+		addQueen(i, col);
+		    if(solveH(col + 1)){
+		        return true;
+		    }
+		removeQueen(i, col);
 	    }
 	}
 
-	for(int i = tracker; i < size; i++){
-	    if(board[col][i] == 0){
-		tracker = i;
-		addQueen(col, i);
-		return solveH(col + 1);
-	    }
-	}
-
-	return solveH(col);
-	
+	return false;
     }
 
-    //
+    //Adds a queen to the board and updates the int array
     //TESTED
     private void addQueen(int r, int c){
 	if((r >= size) || (c >= size)){
@@ -129,7 +123,7 @@ public class QueenBoard{
 	
     }
     
-    //
+    //removes a queen from the board and updates the int array
     //TESTED
     private void removeQueen(int r, int c){
 	if((r >= size) || (c >= size)){
@@ -173,29 +167,39 @@ public class QueenBoard{
      *The board should be reset after this is run.    
 
      */
-
-    //TESTED
-    public static int factorial(int n){
-	int sum = 1;
-
-	if(n == 0){
-	    return 0;
-	}
-
-	for(int i = 1; i <= n; i++){
-	    sum = i * sum;
-	}
-
-	return sum;
-    }
     
-    //
+    //Counts the number of possible solutions for a given board and returns it
     public int getSolutionCount(){
-    	return -1;
+	clear(board);
+	solutionCountH(0);
+	clear(board);
+	return tracker;
+    }
+	
+
+    //helper function used for counting the number of solutions
+    //TESTED
+    public boolean solutionCountH(int col){
+	if(col == size){
+	    tracker = tracker + 1;
+	    return false;
+	}	
+      
+        for(int i = 0; i < size; i++){
+	    if(board[i][col] == 0){
+		addQueen(i, col);
+		    if(solutionCountH(col + 1)){
+		        return true;
+		    }
+		removeQueen(i, col);
+	    }
+	}
+
+	return false;
     }
 
     /**toString
-     *and all nunbers that represent queens are replaced with 'Q' 
+     *and all numbers that represent queens are replaced with 'Q' 
      *all others are displayed as underscores '_'
      */
     //TESTED
@@ -237,10 +241,92 @@ public class QueenBoard{
     
     //MAIN
     public static void main(String[]args){
-	QueenBoard test = new QueenBoard(8);
-	
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	QueenBoard test = new QueenBoard(3);
+        
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
 	test.solve();
 	
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
+
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	test = new QueenBoard(3);
+        
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
+	test.solve();
+	
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
+	
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	test = new QueenBoard(4);
+        
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
+	test.solve();
+	
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
+
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	test = new QueenBoard(5);
+        
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
+	test.solve();
+	
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
+
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	test = new QueenBoard(6);
+        
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
+	test.solve();
+	
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
+
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	test = new QueenBoard(7);
+        
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
+	test.solve();
+	
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
+
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	test = new QueenBoard(8);
+        
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
+	test.solve();
+	
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
+
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	test = new QueenBoard(9);
+	
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
+	test.solve();
+	
+	System.out.println(test.toString());
+	System.out.println(test.toStringInt());
+
+	//----------------------------------------------
+	System.out.println("----------------------------------------------");
+	test = new QueenBoard(10);
+        
+	System.out.println( "--- " + test.getSolutionCount() + " ---");
+	test.solve();
 	
 	System.out.println(test.toString());
 	System.out.println(test.toStringInt());

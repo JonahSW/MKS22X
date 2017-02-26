@@ -17,8 +17,10 @@ public void removequeen(r, c){
 }
 
 //places the queen in a valid location
-public void placeQuueen(c){
-       //cycles through a column and places the queen in a valid location, then calls itself on the next column over 
+public void placeQueen(c){
+       //cycles through a column and places the queen in a valid location, then calls itself on the next column over.
+
+       //if a queen cannot be added to a column and there are still columns to go, backtracks one step, removes the queen from the location in the previous column and places the queen at the next available location in that column
 }
 
 //finds a good solution for the board
@@ -28,17 +30,20 @@ public boolean void solve(){
 
 //finds all valid solutions for the given board
 public int countSolutions(){
-       calls placeQueens the number of times there are permutations of the board, and counts all of the solutions it finds
+       //calls placeQueens the number of times there are permutations of the board, and counts all of the solutions it finds
+
+       //runs a version of the solveH function called solutionCountH that increments an integer whenever it finds a solution, instead of just ending.
+
 }
 
 //
 toStringInt(){
-
+	//prints out the int array
 }
 
 //
 toString(){
-
+	//prints out a char array that shows the queens and the locations they threaten
 }
 
 /*
