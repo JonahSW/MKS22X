@@ -36,6 +36,7 @@ public class Recursion{
 	    return 0;
 	}
 
+	System.out.println(recursqrt(n, n / 2));
 	return recursqrt(n, n / 2);
     }
 

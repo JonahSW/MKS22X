@@ -13,6 +13,8 @@ public class QueenBoard{
     
     private int solutionTracker;
 
+    private boolean stoop;
+    
     // CONSTRUCTOR
     public QueenBoard(int size){
 
@@ -21,6 +23,8 @@ public class QueenBoard{
 	if(size < 1){
 	    throw new IllegalArgumentException();
 	}
+
+	stoop = false;
 	
 	board = new int[size][size];
 
@@ -50,6 +54,8 @@ public class QueenBoard{
     //Solves the board, leaving it in the solved state
     //TESTED
     public boolean solve(){
+	clear(board);
+	
 	if((size == 2) || (size == 3)){
 	    return false;
 	}
@@ -59,8 +65,18 @@ public class QueenBoard{
 	}
 
 	tracker = 0;
+
+	boolean good = solveH(0);
+
+	if(good){
+	    return good;
+	}
+
+	clear(board);
+
+	return good;
 	
-	return solveH(0);
+	
     }
     
     //Helper function that places a queen in a column, and then moves on to
@@ -170,6 +186,12 @@ public class QueenBoard{
     
     //Counts the number of possible solutions for a given board and returns it
     public int getSolutionCount(){
+	if(!(stoop)){
+	    return -1;
+	}
+	
+	tracker = 0;
+
 	clear(board);
 	solutionCountH(0);
 	clear(board);
@@ -196,6 +218,16 @@ public class QueenBoard{
 	}
 
 	return false;
+    }
+
+    //id
+    public int countSolutions(){
+	stoop = true;
+	tracker = 0;
+	clear(board);
+	solutionCountH(0);
+	return tracker;
+	
     }
 
     /**toString
@@ -243,7 +275,7 @@ public class QueenBoard{
     public static void main(String[]args){
 	//----------------------------------------------
 	System.out.println("----------------------------------------------");
-	QueenBoard test = new QueenBoard(3);
+	QueenBoard test = new QueenBoard(2);
         
 	System.out.println( "--- " + test.getSolutionCount() + " ---");
 	test.solve();
