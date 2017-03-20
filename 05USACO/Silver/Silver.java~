@@ -1,0 +1,14 @@
+public class Silver{
+    //instance variables
+    private int height;
+    private int width
+    //constructor
+
+    //methods
+
+    //MAIN
+    public static void main(String[]args){
+
+    }
+    //END MAIN
+}
