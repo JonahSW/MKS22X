@@ -34,22 +34,18 @@ public class Bronze{
 		in++;
 	    }
 	    
-	    inf.nextLine();
-
 	    rows = loader[0];
 	    cols = loader[1];
 	    elevation = loader[2];
 	    N = loader[3];
-	    
-	    
+
 	    //creates the lake array
 	    lake = new int[rows][cols];
+	    
 	    for(int i = 0; i < rows; i++){
 		for(int p = 0; p < cols; p++){
-		    
 		    lake[i][p] = inf.nextInt();
 		}
-		inf.nextLine();
 	    }
 	    
 	    //inf.nextLine();
@@ -59,31 +55,31 @@ public class Bronze{
 		for(int p = 0; p < 3; p++){
 		    instructions[i][p] = inf.nextInt();
 		}
-		inf.nextLine();
 	    }
+
 	}catch(FileNotFoundException e){
 	    System.out.println("Invalid filename or path");
 	    System.exit(1);
 	}
-
-	//troubleshooting print methods
-	System.out.println(rows + " " + cols + " " + elevation + " " + N);
-	System.out.println(lake[0][0] + " " + lake[0][1] + " " + lake[3][4] + " " + lake[3][5]);
-	System.out.println(instructions[0][0] + " " + instructions[0][1] + " " + instructions[0][2] + " " + instructions[1][0]);
     }
 
     //Execute Wrapper Method
     public int execute(){
-
+	//toString(rows, cols, lake);
 	for(int i = 0; i < N; i++){
 	    executeUtil(instructions[i][0], instructions[i][1], instructions[i][2]);
+	    //toString(rows, cols, lake);
 	}
-	return calculateVolume();
+
+	int output = calculateVolume();
+	System.out.println(output);
+	return output;
     }
 
     //returns true if the top left corner of a 3x3 square has a square entirely on the board
     public boolean isSafe(int row, int col){
-	if((row < rows - 3) && (col < cols - 3) && (row >= 0) && (col >= 0)){
+		
+	if((row <= rows - 3) && (col <= cols - 3) && (row >= 0) && (col >= 0)){
 	    return true;
 	}
 
@@ -93,20 +89,24 @@ public class Bronze{
     //Method for executing the instructions in one line
     public void executeUtil(int row, int col, int stomps){
 	int down = 0;
+
+	//toString(rows, cols, lake);
+	
 	if(isSafe(row, col)){
 	    down = hiPoint(row, col) - stomps;
-	}
-
-	for(int i = row; i < row + 3; i++){
-	    for(int p = col; p < col + 3; p++){
-		if(lake[i][p] >= down){
-		    lake[i][p] = down;
-		}
-		if(lake[i][p] < 0){
-		    lake[i][p] = 0;
+	    for(int i = row; i < row + 3; i++){
+		for(int p = col; p < col + 3; p++){
+		    if(lake[i][p] >= down){
+			lake[i][p] = down;
+		    }
+		    if(lake[i][p] < 0){
+			lake[i][p] = 0;
+		    }
 		}
 	    }
 	}
+
+	//toString(rows, cols, lake);
     }
 
     //method for finding the highest point on a 3x3 section. Input is the top left of the 3x3 square
@@ -134,20 +134,73 @@ public class Bronze{
 		if(lake[i][p] > elevation){
 		    depthOfSquare = 0;
 		}else{		
-		    depthOfSquare = (elevation - lake[i][p]) * 72 * 72;
+		    depthOfSquare = (elevation - lake[i][p]);
+		    //System.out.println(depthOfSquare);
 		    depthTotal = depthTotal + depthOfSquare;
 		}
 	    }
 	}
 	
-	return depthTotal;
+	return depthTotal * 5184;
     }
 
+    //toString method for int arrays
+    public void toString(int x, int y, int[][] arry){
+	String str = "";
+	for(int i = 0; i < x; i++){
+	    for(int p = 0; p < y; p++){
+		str = str + arry[i][p] + " ";
+	    }
+	    str = str + '\n';
+	}
+
+	System.out.println(str);
+    }
+
+    
     //MAIN
     public static void main(String[]args){
 	Bronze test1 = new Bronze("Test1.txt");
+	test1.execute();
+	//-------------------------------------
 
-	
+	///*
+	Bronze test2 = new Bronze("Test2.txt");
+	test2.execute();
+	//-------------------------------------
+
+	Bronze test3 = new Bronze("Test3.txt");
+	test3.execute();
+	//-------------------------------------
+
+	Bronze test4 = new Bronze("Test4.txt");
+	test4.execute();
+	//-------------------------------------
+
+	Bronze test5 = new Bronze("Test5.txt");
+	test5.execute();
+	//-------------------------------------
+
+	Bronze test6 = new Bronze("Test6.txt");
+	test6.execute();
+	//-------------------------------------
+
+	Bronze test7 = new Bronze("Test7.txt");
+	test7.execute();
+	//-------------------------------------
+
+	Bronze test8 = new Bronze("Test8.txt");
+	test8.execute();
+	//-------------------------------------
+
+	Bronze test9 = new Bronze("Test9.txt");
+	test9.execute();
+	//-------------------------------------
+
+	Bronze test10 = new Bronze("Test10.txt");
+	test10.execute();
+	//-------------------------------------
+	//*/
     }
     //END MAIN
 }
