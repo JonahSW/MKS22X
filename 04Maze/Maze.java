@@ -60,6 +60,8 @@ public class Maze{
 	try{
 	    File text = new File(filename);//can be a path"/full/path/to/file.txt"
 	    Scanner inf = new Scanner(text);
+
+	    //finds the dimensions of the maze, and loads it into a string
 	    while(inf.hasNextLine()){
 		String line = inf.nextLine();
 		height++;
