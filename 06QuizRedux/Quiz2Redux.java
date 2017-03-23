@@ -3,6 +3,8 @@ import java.util. *;
 public class Quiz2Redux{
 
     //Given a String, return an  ArrayList<String> that contains all of the subsets of the characters in the String
+
+    /*
     public char[] arry;
     public int length;
     public ArrayList<String> powerSet;
@@ -37,12 +39,70 @@ public class Quiz2Redux{
 	powerHelp(index + 1, subset);
 
     }
-   
+    */
+
+    //Actual Methodd
+    public static ArrayList<String> combinations(String str){
+	ArrayList<String>words = new ArrayList<String>();
+	help(words, str, 0, "");
+	String nul = "";
+	words.add(nul);
+	Collections.sort(words);
+	return words;
+    }
+  
+    private static void help(ArrayList<String> words2, String str2, int index, String subset){
+
+	//troubleshooting
+	//System.out.println("current index = " + index + " : " + subset);
+	if(str2 == ""){
+	    words2.add(subset);
+	    return;
+	}
+	
+	if(index == str2.length() - 1){
+	    
+	    subset = subset + str2.charAt(index);
+	    words2.add(subset);
+	    
+	    return;
+	}
+
+	//adds the subset to the arraylist
+	//words2.add(subset);
+	    
+	//recursive calls
+	help(words2, str2, index + 1, (subset + str2.charAt(index)));
+	help(words2, str2, index + 1, subset);
+
+    }
+    
     //MAIN
     public static void main(String[]args){
-	//Quiz2Redux test1 = new Quiz2Redux("");
-	//test1.powerset();
-	//System.out.println(test1.powerSet);
+	System.out.println(combinations("").toString());
+
+	System.out.println(combinations("a").toString());
+
+	System.out.println(combinations("ab").toString());
+
+	System.out.println(combinations("abc").toString());
+
+	System.out.println(combinations("abcd").toString());
+
+	//System.out.println(combinations("abcde").toString());
+
+	//System.out.println(combinations("abcde!").toString());
+
+	//System.out.println(combinations("abcde9283qr8 ").toString());
+
+	//System.out.println(combinations("applesaucees!!??e").toString());
+
+	//System.out.println(combinations("This is a TEST").toString());
+	
+	/*
+	Quiz2Redux test1 = new Quiz2Redux("");
+	test1.powerset();
+	System.out.println(test1.powerSet);
 	
 	Quiz2Redux test2 = new Quiz2Redux("a");
 	test2.powerset();
@@ -60,28 +120,29 @@ public class Quiz2Redux{
 	test5.powerset();
 	System.out.println(test5.powerSet);
 
-	Quiz2Redux test6 = new Quiz2Redux("abc");
+	Quiz2Redux test6 = new Quiz2Redux("mufin");
 	test6.powerset();
 	System.out.println(test6.powerSet);
 
-	Quiz2Redux test7 = new Quiz2Redux("abc");
+	Quiz2Redux test7 = new Quiz2Redux("abczegy");
 	test7.powerset();
 	System.out.println(test7.powerSet);
 
-	Quiz2Redux test8 = new Quiz2Redux("abc");
+	Quiz2Redux test8 = new Quiz2Redux("abcdefghi");
 	test8.powerset();
 	System.out.println(test8.powerSet);
 
-	Quiz2Redux test9 = new Quiz2Redux("abc");
+	Quiz2Redux test9 = new Quiz2Redux("applesauce");
 	test9.powerset();
 	System.out.println(test9.powerSet);
 
-	Quiz2Redux test10 = new Quiz2Redux("abc");
+	Quiz2Redux test10 = new Quiz2Redux("%^@QE");
 	test10.powerset();
 	System.out.println(test10.powerSet);
 
-	Quiz2Redux test11 = new Quiz2Redux("abc");
+	Quiz2Redux test11 = new Quiz2Redux("7572rwe");
 	test11.powerset();
 	System.out.println(test11.powerSet);
+	*/
     }
 }
