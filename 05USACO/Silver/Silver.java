@@ -81,9 +81,9 @@ public class Silver{
 	for(int p = 0; p < height; p++){
 	    for(int i = 0; i < length; i++){
 		
-		if((p == h1) && ( i == l1)){
+		if((p == h1 - 1) && ( i == l1 - 1)){
 		    str = str + 'S' + " ";
-		}else if((p == h2) && ( i == l2)){
+		}else if((p == h2 - 1) && ( i == l2 - 1)){
 		    str = str + 'E' + " ";
 		}else{
 		str = str + field[p][i] + ' ';
@@ -97,15 +97,30 @@ public class Silver{
 
     //checks if space is in field and is not a tree
     public boolean isClear(int row, int col){
-	if((row > 0) && (col > 0) && (row <= height) && (col <= length) && (field[row][col] != '*')){
+	if((row >= 0) && (col >= 0) && (row < height) && (col < length) && (field[row][col] != '*')){
 	    return true;
 	}
-	    return false;
+
+	return false;
     }
 
     //wrapper function executes the command
     public int travel(){
-	travelUtil(h1, l1, 0);
+	travelUtil(h1 - 1, l1 - 1 , 0);
+
+	//System.out.println(isClear(2, 0));
+	//System.out.println(isClear(0, 2));
+	//System.out.println(isClear(0, 3));
+	//System.out.println(isClear(3, 0));
+	
+	//System.out.println(field[0][0]);
+	//System.out.println(field[0][1]);
+	//System.out.println(field[0][2]);
+	//System.out.println(field[2][0]);
+	//System.out.println(field[0][3]);
+	
+	//System.out.println(field[0][3]);
+	//System.out.println(field[0][4]);
 
 	System.out.println(count);
 	return count;
@@ -117,8 +132,12 @@ public class Silver{
 	    return false;
 	}
 
-	if((h == h2) && (l == l2)){
+	//field[h][l] = 'x';
+	//toString();
+
+	if((t == time) && (h == h2 - 1) && (l == l2 - 1)){
 	    count++;
+	    return false;
 	}
 
 	if(t == time){
@@ -128,6 +147,30 @@ public class Silver{
 	return (travelUtil(h + 1, l, t + 1) || travelUtil(h - 1, l, t + 1) ||			 travelUtil(h, l + 1, t + 1) || travelUtil(h, l - 1, t + 1) ||
 		travelUtil(h, l, t + 1));
     }
+
+    //isClear function for travelUtilFast
+    public boolean isClearF(int h, int l, int[][]trackField){
+	if((h >= 0) && (l >= 0) && (h < height) && (l < length) && (int[h][l]) !< 0){
+	    return true;
+	}
+
+	return false;
+    }
+    
+    //helper function for finding the number of paths FAST ALGORITHM
+    //non-recursive
+    public boolean travelUtilFast(int h, int l, int t){
+	int trackField = new int[height][length];
+	for(int i = 0; i < height; i++){
+	    for(int p = 0; p < length; p++){
+		if(field[h][l] == '*'){
+		    trackField[h][l] = -1;
+		}
+	    }
+	}
+
+	//
+    }
     
     //MAIN
     public static void main(String[]args){
@@ -136,6 +179,47 @@ public class Silver{
 
 	Silver test2 = new Silver("Test2.txt");
 	test2.travel();
+
+	Silver test3 = new Silver("Test3.txt");
+	test3.travel();
+
+	Silver test4 = new Silver("Test4.txt");
+	test4.travel();
+
+	Silver test5 = new Silver("Test5.txt");
+	test5.travel();
+
+	//-------------------------------------------------
+
+	Silver test6 = new Silver("ctravel.1.in");
+	test6.travel();
+
+	Silver test7 = new Silver("ctravel.2.in");
+	test7.travel();
+
+	Silver test8 = new Silver("ctravel.3.in");
+	test8.travel();
+
+	Silver test9 = new Silver("ctravel.4.in");
+	test9.travel();
+
+	Silver test10 = new Silver("ctravel.5.in");
+	test10.travel();
+
+	Silver test11 = new Silver("ctravel.6.in");
+	test11.travel();
+
+	Silver test12 = new Silver("ctravel.7.in");
+	test12.travel();
+
+	Silver test13 = new Silver("ctravel.8.in");
+	test13.travel();
+
+	Silver test14 = new Silver("ctravel.9.in");
+	test14.travel();
+
+	Silver test15 = new Silver("ctravel.10.in");
+	test15.travel();
     }
     //END MAIN
 }

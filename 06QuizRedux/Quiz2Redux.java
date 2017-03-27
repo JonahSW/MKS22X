@@ -41,12 +41,10 @@ public class Quiz2Redux{
     }
     */
 
-    //Actual Methodd
+    //Actual Method
     public static ArrayList<String> combinations(String str){
 	ArrayList<String>words = new ArrayList<String>();
 	help(words, str, 0, "");
-	String nul = "";
-	words.add(nul);
 	Collections.sort(words);
 	return words;
     }
@@ -60,17 +58,15 @@ public class Quiz2Redux{
 	    return;
 	}
 	
-	if(index == str2.length() - 1){
-	    
-	    subset = subset + str2.charAt(index);
+	//if(index == str2.length() - 1){
+	if (index == str2.length()){  
 	    words2.add(subset);
 	    
 	    return;
 	}
 
 	//adds the subset to the arraylist
-	//words2.add(subset);
-	    
+		    
 	//recursive calls
 	help(words2, str2, index + 1, (subset + str2.charAt(index)));
 	help(words2, str2, index + 1, subset);
@@ -89,9 +85,9 @@ public class Quiz2Redux{
 
 	System.out.println(combinations("abcd").toString());
 
-	//System.out.println(combinations("abcde").toString());
+	System.out.println(combinations("abcde").toString());
 
-	//System.out.println(combinations("abcde!").toString());
+	System.out.println(combinations("abcde!").toString());
 
 	//System.out.println(combinations("abcde9283qr8 ").toString());
 
