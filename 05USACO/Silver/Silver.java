@@ -159,6 +159,7 @@ public class Silver{
     
     //helper function for finding the number of paths FAST ALGORITHM
     //non-recursive
+    //still need to study the algorithm
     public boolean travelUtilFast(int h, int l, int t){
 	int trackField = new int[height][length];
 	for(int i = 0; i < height; i++){
@@ -169,6 +170,8 @@ public class Silver{
 	    }
 	}
 
+	if(){
+	}
 	//
     }
     
