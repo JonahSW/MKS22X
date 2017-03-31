@@ -32,13 +32,27 @@ public class LinkedList {
     //INNER CLASS FOR LNODE
     private class LNode implements LinkedList{
 
+	//variables
+	int value;//starts off null
+	LNode pointer;//negative value implies end of list
+	int tag;//1 = start, -1 = end, 0 = mid
+	
 	//Constructor for node
-	private LNode(){
-
+	private LNode(LNode point, int tag1){
+	    pointer = point;
+	    tag = tag1;
 	}
 
 	//Accessor Methods
-	
+	public int value(){
+	    return value;
+	}
+	public LNode pointer(){
+	    return pointer;
+	}
+	public int tag(){
+	    return tag;
+	}
     }
     //END OF LNODE INNER CLASS
     //--------------------------------------------------------------------------------------

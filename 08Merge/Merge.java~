@@ -36,14 +36,4 @@ public class Merge{
 	swap(ary, 0, j);
     }
 
-    //merge sort function
-    public static void merge(int[][] arry){
-
-    }
-
-    //MAIN
-    public static void main(String[]args){
-
-    }
-    //END MAIN
 }

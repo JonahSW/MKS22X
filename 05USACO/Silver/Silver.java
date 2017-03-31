@@ -108,20 +108,8 @@ public class Silver{
     public int travel(){
 	travelUtil(h1 - 1, l1 - 1 , 0);
 
-	//System.out.println(isClear(2, 0));
-	//System.out.println(isClear(0, 2));
-	//System.out.println(isClear(0, 3));
-	//System.out.println(isClear(3, 0));
+	//travelUtilFast();
 	
-	//System.out.println(field[0][0]);
-	//System.out.println(field[0][1]);
-	//System.out.println(field[0][2]);
-	//System.out.println(field[2][0]);
-	//System.out.println(field[0][3]);
-	
-	//System.out.println(field[0][3]);
-	//System.out.println(field[0][4]);
-
 	System.out.println(count);
 	return count;
     }
@@ -149,7 +137,7 @@ public class Silver{
     }
 
     //isClear function for travelUtilFast
-    public boolean isClearF(int h, int l, int[][]trackField){
+    public boolean isClearFast(int h, int l, int[][]trackField){
 	if((h >= 0) && (l >= 0) && (h < height) && (l < length) && (int[h][l]) !< 0){
 	    return true;
 	}
@@ -170,8 +158,7 @@ public class Silver{
 	    }
 	}
 
-	if(){
-	}
+	//trackes through the grid, finding how many times each square can be reached
 	//
     }
     
