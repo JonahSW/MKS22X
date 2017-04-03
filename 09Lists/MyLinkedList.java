@@ -10,7 +10,7 @@ public class LinkedList {
 
     }
     
-    //Methods
+    //METHODS-----------------------------
 
     //add method (adds to end)
     public boolean add(int value){

@@ -1,44 +1,58 @@
+import java.util.*;
+
 public class Quick{
 
+    //implementation function for quicksort
     public static void quicksort(int[]ary){
-
+	//calls to part()
     }
 
-    //Quickselect partition method to work with dutch flag
-    public static void quickselect(int[]ary, int target){
-	int l;//LT
-	int g;//GT
-	int i;
+    public static int part(int[] data, int start, int end){
+	int len = (end - start);
+	int pivot = data[len / 2];
+	int temp;
 	
-	while(l <= g){
-	    if(ary[i] == target){
-		l++;
-	    }else if(a[i] < target){
-		swap(ary, i, l);
-		l++;
-		i++;
-	    }else{
-		swap(ary, i, g);
-		g--;
+	for(int i = 0; i < len; i++){
+	    if(data[i] < pivot){
+		temp = data[i];
+		data[i] = data[0];
+		data[0] = temp;
+	    }
+	    if(data[i] > pivot){
+		temp = data[i];
+		data[i] = data[len - 1];
+		data[len - 1] = temp;
 	    }
 	}
+
+	return pivot;
     }
 
-    //two section quickselect
-    public static int partition(int[] ary, int target){
-	int i;
-	int j;
+    //toString method for printlng out an int array;
+    public static void toString(int[] ary){
+	String str = "{";
 
-	while(i <= j){
-	    if(ary[i] < target){
-		i++;
-	    }else(a[i] >= v){
-		    swap(ary, i, j);
-		    j--;
-		}
+	for(int i = 0; i < ary.length - 1; i++){
+	    str = str + ary[i] + ", ";
 	}
-	swap(ary, 0, j);
+
+	str = str + ary[ary.length - 1] + "}";
+
+	System.out.println(str);
     }
 
+    /*
     
+    */
+
+    //MAIN
+    public static void main(String[]args){
+	int[] test1 = new int[]{8,5,6,4,1,2,9,3};
+
+	toString(test1);
+	System.out.println(part(test1, 0, 8));
+	toString(test1);
+
+    }
+    //END MAIN
 }
