@@ -2,6 +2,7 @@ public class LinkedList {
 
     //Instance Variables
     LNode start, end;
+    DNode stat, end;
 
     int size;
 
@@ -17,15 +18,32 @@ public class LinkedList {
 
     }
 
+    //add method for doubly linked lists
+    public boolean add(){
+	return false;
+    }
+
+    //removes an element
+    public boolean remove(){
+
+	return false;
+    }
+
     //returns the size of the Linked List
     public int size(){
 	int size;
 
-	for(int i = 
+	//for(int i = 
 
 	return size;
     }
+	
+    //returns the data at a songle node
+    public int get(int index){
 
+	return -1;
+    }
+    
     //ToString method prints out the list
     public String toString(){
 
@@ -81,8 +99,11 @@ public class LinkedList {
 	public int value(){
 	    return value;
 	}
-	public DNode pointer(){
-	    return pointer;
+	public DNode next(){
+	    return next;
+	}
+	public DNode prev(){
+	    return prev;
 	}
 	public int tag(){
 	    return tag;

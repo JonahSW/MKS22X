@@ -11,9 +11,17 @@ public class Quick{
 
 	int temp = 0;
 	int pivot = data[start];
+	int track = start;
 		
 	while(start < end){
-	    
+	    if(data[start] < pivot){
+		temp = data[start];
+		data[start] = pivot;
+		data[track] = temp;
+
+		track = start;
+		start++;
+	    }
 	}
 
 	return pivot;
