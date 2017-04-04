@@ -8,21 +8,19 @@ public class Quick{
     }
 
     public static int part(int[] data, int start, int end){
-	int len = (end - start);
-	int pivot = data[len / 2];
-	int temp;
+
+	int pivotIndex = start + ((end - start) / 2);
+	int pivot = data[pivotIndex];
+
+	int i = start;
 	
-	for(int i = 0; i < len; i++){
+	while(i < end){
+
 	    if(data[i] < pivot){
-		temp = data[i];
-		data[i] = data[0];
-		data[0] = temp;
+		less = 
 	    }
-	    if(data[i] > pivot){
-		temp = data[i];
-		data[i] = data[len - 1];
-		data[len - 1] = temp;
-	    }
+	    
+	    i++;
 	}
 
 	return pivot;

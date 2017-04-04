@@ -3,16 +3,17 @@ import java.util.*;
 public class Merge{
 
     //Quickselect partition method to work with dutch flag
-    public static void quickselect(int[]ary, int target){
-	int l;//LT
-	int g;//GT
-	int i;
+    //from in class pseudocode
+    public static void quickselect(int[]ary, int target, int l, int g){
+	//int l;//LT
+	//int g;//GT
+	int i = 0;
 	int temp;
 	
 	while(l <= g){
 	    if(ary[i] == target){
 		l++;
-	    }else if(a[i] < target){
+	    }else if(ary[i] < target){
 		//swap(ary, i, l);
 		temp = ary[i];
 		ary[i] = ary[l];
@@ -28,19 +29,20 @@ public class Merge{
 	    }
 	}
 
-	return
+	//return
     }
 
     //two section quickselect
-    public static int partition(int[] ary, int target){
-	int i = 0;
-	int j = 0;
+    //from in class pseudocode
+    public static int partition(int[] ary, int target, int i, int j){
+	//int i = 0;
+	//int j = 0;
 	int temp = 0;
 
 	while(i <= j){
 	    if(ary[i] < target){
 		i++;
-	    }else(a[i] >= target){
+	    }else if(ary[i] >= target){
 		    //swap(ary, i, j);
 		    temp = ary[i];
 		    ary[i] = ary[j];
@@ -48,7 +50,7 @@ public class Merge{
 		    j--;
 		}
 	}
-	swap(ary, 0, j);
+	//swap(ary, 0, j);
 	temp = ary[0];
 	ary[0] = ary[j];
 	ary[j] = temp;
@@ -77,6 +79,11 @@ public class Merge{
     //MAIN
     public static void main(String[]args){
 	int[] test1 = new int[]{8,5,6,4,1,2,9,3};
+
+	//testing 2 section quickselect
+	toString(test1);
+	partition(test1, 4, 0, 8);
+	toString(test1);
 	
     }
     //END MAIN
