@@ -25,7 +25,11 @@ public class LinkedList {
 
     //removes an element
     public boolean remove(){
+	return false;
+    }
 
+    //removes an element from a specified location
+    public boolean remove(){
 	return false;
     }
 
