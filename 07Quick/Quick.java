@@ -14,19 +14,22 @@ public class Quick{
 	int track = start;
 
 	//tracks through the array, moving the data at the start index to the kth location in the array
-	while(start < end){
-	    
-	    if(data[start] <= pivot){
-		temp = data[start];
-		data[start] = pivot;
-		data[track] = temp;
-
-		track = start;
+	while(start <= end){
+	    while(data[start] < pivot){
 		start++;
+	    }
+	    while(data[end] > pivot){
+		end--;
+	    }
+
+	    if(start < end){
+		track = data[start];
+		data[start] = data[end];
+		data[end] = track;
 	    }
 	}
 
-	return pivot;
+	return start;
     }
 
     //toString method for printlng out an int array;
@@ -45,7 +48,7 @@ public class Quick{
 
     //MAIN
     public static void main(String[]args){
-	int[] test1 = new int[]{8,5,6,4,1,2,9,3};
+	int[] test1 = new int[]{7,8,5,6,4,1,2,9,3};
 
 	toString(test1);
 	System.out.println(part(test1, 0, 7));

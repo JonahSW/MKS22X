@@ -1,4 +1,4 @@
-public class LinkedList {
+public class LinkedList implements Iterable<Integer>{
 
     //Instance Variables
     LNode start, end;
@@ -54,7 +54,37 @@ public class LinkedList {
 	System.out.println();
     }
 
+    //Iterator constructor
+    public Iterator<Integer> interator(){
+	return new MyLinkedListIterator(this);
+    }
+
     //--------------------------------------------------------------------------------------
+
+    //inner iterator class
+    public class MyLinkedListIterator implements Iterator<Integer>{
+
+	//accesses next index for linked list
+	public LNode next(){
+
+	}
+
+	//accesses next index for doubly linked list
+	public DNode next(){
+
+	}
+
+	//returns true if a given node points to another node
+	public boolean hasNext(){
+
+	}
+
+	//unused, throws unsupported operation exception
+	remove(){
+	    //throws unsupported operation exception
+	}
+    }
+    
     //INNER CLASS FOR LNODE
     private class LNode implements LinkedList{
 
