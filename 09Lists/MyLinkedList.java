@@ -7,29 +7,40 @@ public class LinkedList implements Iterable<Integer>{
     int size;
 
     //Constructor for LinkedList
-    public LinkedList(){
+    public LinkedList(LNode start, LNode end, int size){
+	this.start = start;
+	this.end = end;
+	this.size = size;
+    }
 
+    //Constructor for DoublyLinkedList
+    public LinkedList(DNode start, DNode end, int size){
+	
     }
     
     //METHODS-----------------------------
 
     //add method (adds to end)
     public boolean add(int value){
+	
+	LNode newNode = new LNode(null, value, -1);
 
+	end.setPointer(newNode);
+	end.setTag(0);
     }
 
     //add method for doubly linked lists
-    public boolean add(){
+    public boolean add(int value){
 	return false;
     }
 
     //removes an element
-    public boolean remove(){
+    public boolean remove(int value){
 	return false;
     }
 
     //removes an element from a specified location
-    public boolean remove(){
+    public boolean remove(int value, int location){
 	return false;
     }
 
@@ -37,7 +48,7 @@ public class LinkedList implements Iterable<Integer>{
     public int size(){
 	int size;
 
-	//for(int i = 
+	//for(int i = ){}
 
 	return size;
     }
@@ -90,13 +101,14 @@ public class LinkedList implements Iterable<Integer>{
 
 	//variables
 	int value;//starts off null
-	LNode pointer;//negative value implies end of list
+	LNode pointer;
 	int tag;//1 = start, -1 = end, 0 = mid
 	
 	//Constructor for node
-	private LNode(LNode point, int tag1){
+	private LNode(LNode point, int value, int tag1){
 	    pointer = point;
 	    tag = tag1;
+	    this.value = value;
 	}
 
 	//Accessor Methods
@@ -108,6 +120,17 @@ public class LinkedList implements Iterable<Integer>{
 	}
 	public int tag(){
 	    return tag;
+	}
+
+	//Mutator Methods
+	public void setValue(int num){
+	    value = num;
+	}
+	public void setPointer(LNode n){
+	    pointer = n;
+	}
+	public void setTag(int num){
+	    tag = num;
 	}
     }
     //END OF LNODE INNER CLASS
@@ -148,6 +171,8 @@ public class LinkedList implements Iterable<Integer>{
 
     //MAIN
     public static void main(String[]arrgs){
-	
+	LNode start = new LNode();
+	LNode end  == new LNode();
+	LinkedList list1 = new LinkedList(LNode
     }
 }

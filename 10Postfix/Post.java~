@@ -1,0 +1,28 @@
+import java.util.StringTokenizer;
+import java.util.Stack<E>;
+
+public class Post{
+
+    
+    public static boolean isOperator(String str){
+	return (str == "+") || (str == "-") || (str = "*") || (str == "/"); 
+    }
+
+    public static int applyOperation(int ln, int rn, String op){
+
+    }
+
+    public static int eval(String str){
+	StringTokenizer tok = new StringTokenizer(str, " ");
+	public Stack() = new Stack stk;
+
+	while(tok.hasMoreTokens()){
+	    stk.push(tok.nextToken);
+	}
+    }
+
+    //MAIN
+    public static void main(STRING[]args){
+
+    }
+}

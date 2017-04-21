@@ -161,7 +161,6 @@ public class Merge{
 	merge(test1, test2, destination);
 	toString(destination);
 	
-	
     }
     //END MAIN
 }
