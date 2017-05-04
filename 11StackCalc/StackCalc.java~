@@ -1,7 +1,7 @@
 import java.util.StringTokenizer;
 import java.util.Stack;
 
-public class Post{
+public class StackCalc{
 
     //returns true if a token is one of the four primary operations
     public static boolean isOperator(String str){

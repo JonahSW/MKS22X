@@ -1,0 +1,5 @@
+java import.util*;
+public class MyHeap{
+    //Contains methods: add, remove, peek(looks at top), push forward, push back, toString
+    
+}
