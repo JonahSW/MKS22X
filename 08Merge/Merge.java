@@ -130,26 +130,69 @@ public class Merge{
     }
 
     //mergeSort Implementation
-    public static void mergeSort(){
+    public static void mergeSort(int[] ary){
+
+	for(){
+
+	}
 
     }
 
-    public static void merge(int[] a, int[] b, int[] destination){
+    public static void merge(int low, int mid, int high, int[] ary){
+	int[] tempary = new int[];
 
-	int trackb = 0;
+	for (int i = low; i <= high; i++) {
+            tempary[i] = ary[i];
+        }
+        int i = lowerIndex;
+        int j = middle + 1;
+        int k = lowerIndex;
+        while (i <= middle && j <= higherIndex) {
+            if (tempMergArr[i] <= tempMergArr[j]) {
+                array[k] = tempMergArr[i];
+                i++;
+            } else {
+                array[k] = tempMergArr[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= middle) {
+            array[k] = tempMergArr[i];
+            k++;
+            i++;
+        }
+    }
+    
+    //merges two sorted lists
+    public static void merge(int[] a, int[] b, int[] res){
+	int max = Math.max(a.length, b.length);
 	int tracka = 0;
-	boolean
-	int len = a.length + b.length;
-	
-	for(int i = 0; i < len; i++){
+	int trackb = 0;
+	int trackout = 0;
 
-	    for(){
-
+	while((tracka < a.length) && (trackb < b.length)){
+	    if(a[tracka] > b[trackb]){
+		ary[trackout] = a[tracka];
+		tracka++;
+		trackout++;
 	    }
 
-	    for(){
-
+	    if(b[trackb] > a[tracka]){
+		ary[trackout] = b[trackb];
+		trackb++;
+		trackout++;
 	    }
+	}
+
+	for(int i = tracka; i < a.length; i++){
+	    ary[trackout] = a[tracka];
+	    trackout++;
+	}
+
+	for(int i = trackb; i < b.length; i++){
+	    ary[trackout] = b[trackb];
+	    trackout++;
 	}
     }
     
