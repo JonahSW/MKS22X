@@ -82,7 +82,9 @@ public class MyHeap{
 	temp = arry[parentInt];
 	arry[parentInt] = arry[childInt];
 	arry[childInt] = temp;
-	}catch(IndexOutOfBoundsExce
+	}catch(IndexOutOfBoundsException() e){
+	    
+	}
 	return parentInt;
     }
 

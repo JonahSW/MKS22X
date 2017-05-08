@@ -44,9 +44,9 @@ public class Quick{
 
 	int pivot = part(ary, left, right);
 
-	quickHelp(ary, pivot, right);
+	quickHelp(ary, pivot + 1, right);
 	
-	quickHelp(ary, left, pivot);
+	quickHelp(ary, left, pivot - 1);
     }
     
     //return the value that is the kth smallest value of the array. 
@@ -122,12 +122,13 @@ public class Quick{
 	    Random r = new Random();
 	    int temp = 0;
 	    int pivot = data[(last + first) / 2];
-	    ///*
+	    /*
 	    wait(150);
 	    System.out.println("first = " + first + "  last = " + last);
 	    System.out.println("pivot index = " + ((last + first) / 2));
 	    System.out.println("pivot value = " + pivot);
-	    ///*
+	    //*/
+
 	    while(first <= last){
 		for(int f = first; data[f] < pivot; f++){
 		    first++;
@@ -145,7 +146,7 @@ public class Quick{
 		    first++;
 		}
 	    }
-	} catch(IndexOutOfBoundsException e) {
+	}catch(IndexOutOfBoundsException e) {
 	    System.out.println("Illegal Index");
 	    return -1;
 	}
@@ -192,8 +193,6 @@ public class Quick{
 
     //MAIN
     public static void main(String[]args){
-
-	///*
 	int[] test3 = new int[]{4,5,6,3,2,8,1,0,9,7};
 	toString(test3);
 	quicksort(test3);
@@ -229,335 +228,71 @@ public class Quick{
 	quicksort(test3);
 	toString(test3);
 	System.out.println("________________________________________________");
-	//test3 = new int[]{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	test3 = new int[]{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1};
+	toString(test3);
+	quicksort(test3);
+	toString(test3);
+	System.out.println("________________________________________________");
+	test3 = new int[]{2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2};
+	toString(test3);
+	quicksort(test3);
+	toString(test3);
+	System.out.println("________________________________________________");
+	test3 = new int[]{0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,345,34,53,5,35,3,53,5,57,57,76,76,7,85,6,45,3,3,46,567,9,9,0,99,6,7,5,3,4,46,776,6,6,3,4-345,35,3,53,5,2,45,63,464,35,35,346,45745,-45745,5474,7,47,7,7,8,9,-546,9,80,7,-98,-342,324,1};
+	toString(test3);
+	quicksort(test3);
+	toString(test3);
+	System.out.println("________________________________________________");
+	test3 = new int[]{34,3,53,45,-435,3,53,46,45,634,545,7,56,4,5,36,435,5,-435,-435,5,-8765,8,87,7,-7,-8765,8765,54,678,6,754,67,87,654,32,45,6789,8,765,4,567,87,654,654,654,647,654,647,8,67543};
 	toString(test3);
 	quicksort(test3);
 	toString(test3);
 	System.out.println("________________________________________________");
 	//*/
-	
-	/*
-	int[] test1 = new int[]{4,6,7,5,2,3,1,9,0,8};
-	toString(test1);
-	System.out.println("7th element: " + quickSelect(test1, 7));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{9,2,1,0,3,7,5,6,4,8};
-	toString(test1);
-	System.out.println("5th element: " + quickSelect(test1, 5));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{2,6,7,57,3324,-6,34242,-463,10,4,3,1,9,0,8};
-	toString(test1);
-	System.out.println("9th element: " + quickSelect(test1, 9));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{2,6,78};
-	toString(test1);
-	System.out.println("7th element: " + quickSelect(test1, 7));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{2,6,78};
-	toString(test1);
-	System.out.println("0th element: " + quickSelect(test1, 0));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{5,2,6,8,9};
-	toString(test1);
-	System.out.println("4th element: " + quickSelect(test1, 4));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{5,2,6,8,9};
-	toString(test1);
-	System.out.println("5th element: " + quickSelect(test1, 5));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{5,-3,2,25,6,3,7,-5,0};
-	toString(test1);
-	System.out.println("1th element: " + quickSelect(test1, 1));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{12,15,90,-3,2,5,6,3,7,-5,0};
-	toString(test1);
-	System.out.println("8th element: " + quickSelect(test1, 8));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{};
-	toString(test1);
-	System.out.println("1th element: " + quickSelect(test1, 1));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{2,1,2};
-	toString(test1);
-	System.out.println("2th element: " + quickSelect(test1, 2));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{4,4,4,4,4,4,4,4,4,4,4,4};
-	toString(test1);
-	System.out.println("7th element: " + quickSelect(test1, 7));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{6,3,2,5,3,2,5,2,4,2,-435,3,8678,6,0,-676,8,7,56,876,6,-3,7,6,3,3,-3,8,77,678,5,8,57,58,5};
-	toString(test1);
-	System.out.println("17th element: " + quickSelect(test1, 17));
-	toString(test1);
-	System.out.println("________________________________________________");
-	System.out.println("________________________________________________");
-	System.out.println("________________________________________________");
+
 	int[] test2 = new int[1000];
 	Random r = new Random();
 
 	for (int i = 0; i < test2.length; i++) {
 	    test2[i] = r.nextInt();
 	}
-	System.out.println("1000th element: " + quickSelect(test2, 1000));
+	quicksort(test2);
 	System.out.println("________________________________________________");
 	test2 = new int[100000];
 
 	for (int i = 0; i < test2.length; i++) {
 	    test2[i] = r.nextInt();
 	}
-	System.out.println("73529th element: " + quickSelect(test2, 73529));
+	quicksort(test2);
 	System.out.println("________________________________________________");
 	test2 = new int[100000];
 
 	for (int i = 0; i < test2.length; i++) {
 	    test2[i] = r.nextInt();
 	}
-	System.out.println("73634th element: " + quickSelect(test2, 73634));
+	quicksort(test2);
 	System.out.println("________________________________________________");
 	test2 = new int[100000];
 
 	for (int i = 0; i < test2.length; i++) {
 	    test2[i] = r.nextInt();
 	}
-	System.out.println("92th element: " + quickSelect(test2, 92));
+	quicksort(test2);
 	System.out.println("________________________________________________");
-	test2 = new int[100000];
+	test2 = new int[10000000];
 
 	for (int i = 0; i < test2.length; i++) {
 	    test2[i] = r.nextInt();
 	}
-	System.out.println("8935th element: " + quickSelect(test2, 8935));
+	quicksort(test2);
 	System.out.println("________________________________________________");	
 	test2 = new int[500000];
 
 	for (int i = 0; i < test2.length; i++) {
 	    test2[i] = r.nextInt();
 	}
-	System.out.println("273539th element: " + quickSelect(test2, 273539));
+	quicksort(test2);
 	System.out.println("________________________________________________");
-	//*/
-
-	//-------------------------------------------------------------------------
-	
-	/*
-	int[] test1 = new int[]{7,8,5,6,4,1,2,9,3};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 3, 8));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,1,2,9,3};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 8));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,3};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 2));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,3};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 5));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{0,1,0,1,0,1,1,0,0,0};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 9));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{0,92,-3,6,43,-43,27,7,8,5,6,4,1,2,9,3};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 15));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,3};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 5));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 0));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 0));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,3};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 3, 3));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,3};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 3, 243));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 3, 20));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};
-	toString(test1);
-	System.out.println("pivot location: " + part(test1, 0, 3));
-	toString(test1);
-
-	System.out.println("________________________________________________");
-	System.out.println("________________________________________________");
-	System.out.println("________________________________________________");
-	int[] test2 = new int[1000];
-	Random r = new Random();
-
-	for(int i = 0; i < test2.length; i++){
-	    test2[i] = r.nextInt();
-	}
-	System.out.println("pivot location: " + part(test2, 0, 999));
-	System.out.println("________________________________________________");
-
-	test2 = new int[100000];
-	for(int i = 0; i < test2.length; i++){
-	    test2[i] = r.nextInt();
-	}
-	System.out.println("pivot location: " + part(test2, 0, 99999));
-	System.out.println("________________________________________________");
-
-	test2 = new int[1000000];
-	for(int i = 0; i < test2.length; i++){
-	    test2[i] = r.nextInt();
-	}
-	System.out.println("pivot location: " + part(test2, 0, 999999));
-	System.out.println("________________________________________________");
-
-	test2 = new int[10000000];
-	for(int i = 0; i < test2.length; i++){
-	    test2[i] = r.nextInt();
-	}
-	System.out.println("pivot location: " + part(test2, 4353955, 9072904));
-	System.out.println("________________________________________________");
-	//*/
-
-	//---------------------------------------------------------------------------
-
-	/*
-	int[] test1 = new int[]{7,8,5,6,4,1,2,9,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 8));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,1,2,9,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 5));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 2));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 5));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{0,1,0,1,0,1,1,0,0,0};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 9));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{0,1,0,1,0,1,1,0,0,0};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 2, 6));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{0,92,-3,6,43,-43,27,7,8,5,6,4,1,2,9,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 12));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{0,92,-3,6,43,-43,27,7,8,5,6,4,1,2,9,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 4, 9));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 1, 4));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 0));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 0));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 3, 3));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{7,8,5,6,4,3};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 243));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 3, 20));
-	toString(test1);
-	System.out.println("________________________________________________");
-	test1 = new int[]{4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4};
-	toString(test1);
-	System.out.println("pivot location: " + partition(test1, 0, 6));
-	toString(test1);
-
-	System.out.println("________________________________________________");
-	System.out.println("________________________________________________");
-	System.out.println("________________________________________________");
-	int[] test2 = new int[1000];
-	Random r = new Random();
-	for(int i = 0; i < test2.length; i++){
-	    test2[i] = r.nextInt();
-	}
-	System.out.println("pivot location: " + partition(test2, 0, 999));
-	System.out.println("________________________________________________");
-	test2 = new int[100000];
-	for(int i = 0; i < test2.length; i++){
-	    test2[i] = r.nextInt();
-	}
-	System.out.println("pivot location: " + partition(test2, 0, 99949));
-	System.out.println("________________________________________________");
-	test2 = new int[1000000];
-	for(int i = 0; i < test2.length; i++){
-	    test2[i] = r.nextInt();
-	}
-	System.out.println("pivot location: " + partition(test2, 0, 996699));
-	System.out.println("________________________________________________");
-	test2 = new int[10000000];
-	for(int i = 0; i < test2.length; i++){
-	    test2[i] = r.nextInt();
-	}
-	System.out.println("pivot location: " + partition(test2, 23424, 9072904));
-	System.out.println("________________________________________________");
-	//*/
     }
     //END MAIN
 }
