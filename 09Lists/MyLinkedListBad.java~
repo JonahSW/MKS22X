@@ -1,4 +1,3 @@
-import java.util.*;
 public class LinkedList implements Iterable<Integer>{
 
     //Instance Variables
@@ -6,9 +5,10 @@ public class LinkedList implements Iterable<Integer>{
     int size;
 
     //Constructor for LinkedList
-    public LinkedList(LNode start){
+    public LinkedList(LNode start, LNode end, int size){
 	this.start = start;
-	size = 0;
+	this.end = end;
+	this.size = size;
     }
 
     //METHODS---------------------------------------------------------------------------------

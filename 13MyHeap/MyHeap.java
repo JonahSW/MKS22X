@@ -82,7 +82,8 @@ public class MyHeap{
 	temp = arry[parentInt];
 	arry[parentInt] = arry[childInt];
 	arry[childInt] = temp;
-	}catch(IndexOutOfBoundsExce
+	}catch{(IndexOutOfBoundsException() e)
+	    	}
 	return parentInt;
     }
 
@@ -119,25 +120,7 @@ public class MyHeap{
 
     //MAIN
     public static void main(String[]args){
-	/*
-	MyHeap test1 = new MyHeap();
-	test1.toString();
-	test1.add("2");
-	test1.toString();
-	test1.add("45");
-	test1.toString();
-	test1.add("7");
-	test1.toString();
-	test1.add("2");
-	test1.toString();
-	test1.add("9");
-	test1.toString();
-	test1.add("5");
-	test1.toString();
 
-	test1.pushForward(5);
-	test1.toString();
-	//*/
 
 	String[] stuff = new String[]{null,"7","6","5","4","3","2","1","0","-1","-2","-3","-4","-5","-6","-7"};
 	MyHeap test2 = new MyHeap(stuff);

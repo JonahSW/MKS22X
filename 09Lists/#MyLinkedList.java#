@@ -2,12 +2,13 @@ import java.util.*;
 public class LinkedList implements Iterable<Integer>{
 
     //Instance Variables
-    LNode start, end;
+    LNode pointer;
     int size;
 
     //Constructor for LinkedList
-    public LinkedList(LNode start){
-	this.start = start;
+    public LinkedList(){
+	LNode start = new LNode
+	pointer = null;
 	size = 0;
     }
 
@@ -15,6 +16,9 @@ public class LinkedList implements Iterable<Integer>{
 
     //add method (adds to end)
     public boolean add(int value){
+
+	while(
+	
 	LNode newNode = new LNode(null, value);
 	end.setPointer(newNode);
     }
@@ -79,7 +83,7 @@ public class LinkedList implements Iterable<Integer>{
     }
     
     //INNER CLASS FOR LNODE
-    private class LNode implements LinkedList{
+    private class LNode extends LinkedList{
 
 	//variables
 	int value;//starts off null
@@ -92,10 +96,10 @@ public class LinkedList implements Iterable<Integer>{
 	}
 
 	//Accessor Methods
-	public int value(){
+	public int getValue(){
 	    return value;
 	}
-	public LNode pointer(){
+	public LNode getPointer(){
 	    return pointer;
 	}
 

@@ -1,0 +1,19 @@
+	/*
+	MyHeap test1 = new MyHeap();
+	test1.toString();
+	test1.add("2");
+	test1.toString();
+	test1.add("45");
+	test1.toString();
+	test1.add("7");
+	test1.toString();
+	test1.add("2");
+	test1.toString();
+	test1.add("9");
+	test1.toString();
+	test1.add("5");
+	test1.toString();
+
+	test1.pushForward(5);
+	test1.toString();
+	//*/
