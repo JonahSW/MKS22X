@@ -11,29 +11,37 @@ public class Merge{
         catch (InterruptedException e) {
         }
     }
-
-    //toString method for printlng out an int array;
-    public static void toString(int[] ary){
-	String str = "{";
-	for(int i = 0; i < ary.length - 1; i++){
-	    str = str + ary[i] + ", ";
-	}
-	if(ary.length < 1){
-	    System.out.println("{}");
-	}else{
-	    str = str + ary[ary.length - 1] + "}";
-	    System.out.println(str);
-	}
-    }
   
     //mergeSort Implementation
-    public static void mergeSort(int[] ary){
-	
+    public static int[] mergeSort(int[] ary){
+
+	if(ary.length < 2){
+	    return ary;
+	}
+
+	int[] aryfront = Arrays.copyOfRange(ary, 0, ary.length / 2);
+	int[] aryback = Arrays.copyOfRange(ary, ary.length / 2, ary.length);
+
+	return mergeHelp(aryfront, aryback);
     }
 
-    public static void mergeHelp(int[] ary1, int[]ary2){
-	if((ary1.length == 1) && (ary2.length == 1)){
-	    merge(ary1, ary2);
+    //helper function for mergeSort
+    public static int[] mergeHelp(int[] ary1, int[]ary2){
+
+	int[] ary1front = Arrays.copyOfRange(ary1, 0, ary1.length / 2);
+	int[] ary1back = Arrays.copyOfRange(ary1, ary1.length / 2, ary1.length);
+	int[] ary2front = Arrays.copyOfRange(ary2, 0, ary2.length / 2);
+	int[] ary2back = Arrays.copyOfRange(ary2, ary2.length / 2, ary2.length);
+
+	return merge(mergeHelpHelp(ary1, ary1front, ary1back), mergeHelpHelp(ary2, ary2front, ary2back));
+    }
+
+    //Helper function for mergeHelp, returns either the base case or the next round of recursion
+    public static int[] mergeHelpHelp(int[] ary, int[] ary1f, int[]ary1b){
+	if(ary.length == 1){
+	    return ary;	 
+	}else{
+	    return mergeHelp(ary1f, ary1b);
 	}
     }
     
@@ -48,16 +56,13 @@ public class Merge{
 	while((tracka < a.length) && (trackb < b.length)){
 	    if(a[tracka] < b[trackb]){
 		ary[trackout] = a[tracka];
-		//System.out.println("poof" + a[tracka]);
 		tracka++;
 		trackout++;
 	    }else if(b[trackb] < a[tracka]){
 		ary[trackout] = b[trackb];
-		//System.out.println("puff" + b[trackb]);
 		trackb++;
 		trackout++;
 	    }else{
-		//System.out.println("piff" + a[tracka] + b[trackb]);
 		ary[trackout] = a[tracka];
 		trackout++;
 		tracka++;
@@ -66,21 +71,16 @@ public class Merge{
 		trackb++;
 	    }
 	}
-
-	//System.out.println(b.length + " " + trackb);
-	//System.out.println(a.length + " " + tracka);
 	
 	if(0 == (b.length - trackb)){
 	    for(int i = tracka; i < a.length; i++){
 		ary[trackout] = a[i];
 		trackout++;
-		//System.out.println("pooffer" + a[tracka] + ary[trackout]);//
 	    }
 	}else if(0 == (a.length - tracka)){
 	    for(int i = trackb; i < b.length; i++){
 		ary[trackout] = b[i];
 		trackout++;
-		//System.out.println("puffer" + b[trackb] + ary[trackout]);//
 	    }
 	}
 	return ary;
@@ -88,40 +88,7 @@ public class Merge{
     
     //MAIN
     public static void main(String[]args){
-	int[] test1 = new int[]{0,2,4};
-	int[] test2 = new int[]{1,3,5};
 
-	//System.out.println(Arrays.toString(test1));
-	//System.out.println(Arrays.toString(test2));
-
-	System.out.println(Arrays.toString(merge(test1, test2)));
-
-	///*
-	test1 = new int[]{0,2,4,6,8};
-	test2 = new int[]{1,3,5,7,9};
-	System.out.println(Arrays.toString(merge(test1, test2)));
-
-	test1 = new int[]{-2,-1,1,2,3,4,4,4,6,7,9,10};
-	test2 = new int[]{1,2,12,111,119};
-	System.out.println(Arrays.toString(merge(test1, test2)));
-
-	test1 = new int[]{-4,-2,0,10,60,82};
-	test2 = new int[]{0,1,3,9};
-	System.out.println(Arrays.toString(merge(test1, test2)));
-	
-	test1 = new int[]{8};
-	test2 = new int[]{9};
-	System.out.println(Arrays.toString(merge(test1, test2)));
-
-	test1 = new int[]{8};
-	test2 = new int[]{-3,1,5,7,9};
-	System.out.println(Arrays.toString(merge(test1, test2)));
-
-	test1 = new int[]{-234,-23,-2,1,3,4,4,5,7,7,8,9,10};
-	test2 = new int[]{-1,3,5,7,9,23,42};
-	System.out.println(Arrays.toString(merge(test1, test2)));
-	//*/
-	
     }
     //END MAIN
 }
