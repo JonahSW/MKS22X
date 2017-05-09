@@ -1,0 +1,22 @@
+Merge method: Given two sorted arrays, returns a single sorted array containing all of their elements
+
+public static merge(int[] a, int[] b){
+	int ta, tb //two ints, each keeps track of the current index in their respective arrays
+	
+	//compare the two elements at ta and tb, add the largest one to the reultant array, and increment that tracker
+	
+	//if one tracker reaches the end of its array, add the rest of the second array to the resultant at the end
+}
+
+Merge sort: given an array, divides it up into many arrays of length one, and then merges them together
+
+public static merge(int[] array){
+	
+}
+
+//used if merge wants to be recursive
+public static mergeHelp(){
+	//breaks array into two sections (i.e. copies them into arrays) and then merges them
+	//doing this recursively should sort the array
+//you need an end case to deal with wierdly lengthed arrays
+}
