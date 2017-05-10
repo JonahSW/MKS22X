@@ -2,12 +2,13 @@ import java.util.*;
 public class LinkedList implements Iterable<Integer>{
 
     //Instance Variables
-    LNode start, end;
+    LNode pointer;
     int size;
 
     //Constructor for LinkedList
-    public LinkedList(LNode start){
-	this.start = start;
+    public LinkedList(){
+	LNode start = new LNode
+	pointer = null;
 	size = 0;
     }
 
@@ -15,15 +16,28 @@ public class LinkedList implements Iterable<Integer>{
 
     //add method (adds to end)
     public boolean add(int value){
+
 	LNode newNode = new LNode(null, value);
+	LNode end = start;
+	
+	while(hasNext()){
+	    end = 
+	}
+	
 	end.setPointer(newNode);
     }
 
     //removes an element from the end of the linked list
-    public boolean remove(int value){
-
+    public boolean remove(){
+	LNode mark = start;
+	LNode target;
 	
-	start.setPointer(null)
+	while(hasNext()){
+	    target = mark;
+	    mark = mark.getPointer();
+	}
+	//NEEDS TO ACCESS THE ELEMENT JUST BEFORE TE+HE END
+	target.setPointer(null);
 	
 	return false;
     }
@@ -64,22 +78,23 @@ public class LinkedList implements Iterable<Integer>{
 
 	//accesses next index for linked list
 	public LNode next(){
-
+	    return getPointer();
 	}
 
 	//returns true if a given node points to another node
 	public boolean hasNext(){
-
+	    return (next != null);
 	}
 
 	//unused, throws unsupported operation exception
 	remove(){
+	    throw new UnsupportedOperationException();
 	    //throws unsupported operation exception
 	}
     }
     
     //INNER CLASS FOR LNODE
-    private class LNode implements LinkedList{
+    private class LNode extends LinkedList{
 
 	//variables
 	int value;//starts off null
@@ -92,10 +107,10 @@ public class LinkedList implements Iterable<Integer>{
 	}
 
 	//Accessor Methods
-	public int value(){
+	public int getValue(){
 	    return value;
 	}
-	public LNode pointer(){
+	public LNode getPointer(){
 	    return pointer;
 	}
 
@@ -111,8 +126,6 @@ public class LinkedList implements Iterable<Integer>{
     
     //MAIN
     public static void main(String[]arrgs){
-	LNode start = new LNode();
-	LNode end  == new LNode();
-	LinkedList list1 = new LinkedList(LNode
+	LinkedList list1 = new LinkedList();
     }
 }
