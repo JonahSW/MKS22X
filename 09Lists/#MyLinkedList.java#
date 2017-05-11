@@ -77,17 +77,17 @@ public class MyLinkedList implements Iterable<Integer>{
 	return output;
     }
 
-
+    //Iterator constructor
+    public Iterator<LNode> interator(){
+	return new MyLinkedListIterator(this);
+    }
+    
     //--------------------------------------------------------------------------------------
 
     //inner iterator class
     public class MyLinkedListIterator implements Iterator<Integer>{
 
-	//Iterator constructor
-	public Iterator<LNode> interator(){
-	    return new MyLinkedListIterator(this);
-	}
-	
+	public MyLinkedList List
 	//accesses next index for linked list
 	public LNode next(){
 	    return getPointer();
