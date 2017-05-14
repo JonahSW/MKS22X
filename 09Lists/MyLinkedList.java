@@ -2,8 +2,8 @@ import java.util.*;
 public class MyLinkedList implements Iterable<Integer>{
 
     //Instance Variables
-    LNode start, index;
-    int size;
+    public LNode start, index;
+    public int size;
 
     //Constructor for LinkedList
     public MyLinkedList(){
@@ -15,93 +15,145 @@ public class MyLinkedList implements Iterable<Integer>{
     //METHODS---------------------------------------------------------------------------------
 
     //add method (adds to end)
-    public boolean add(int value){
-
-	size++;
-	
-	if(size == 1){
-	    start.setValue(value);
-	    start.setPointer(null);
-	    return true;
+    //Tested
+    public int add(int value){
+	index = start;
+	LNode newNode = new LNode(null, value);
+	if(size == 0){
+	    start = newNode;
+	    size++;
+	    return value;
 	}else{
-	    LNode newNode = new LNode(null, value);
 	    while(index.getPointer() != null){
 		index = index.getPointer();
 	    }	
 	    index.setPointer(newNode);
-	    return true;
+	    size++;
+	    return value;
 	}
-
-	return false;
     }
 
     //removes an element from the end of the linked list
-    public boolean remove(){
+    //Tested
+    public int remove(){
 	LNode mark = start;
-	LNode target;
-	
-	//NEEDS TO ACCESS THE ELEMENT JUST BEFORE TE+HE END
-	target.setPointer(null);
-	
-	return false;
+	int removed;
+	if(size == 0){
+	    return 0;
+	}
+	for(int i = 0; i < size - 1; i++){
+	    mark = mark.getPointer();
+	}
+	removed = mark.getValue();
+	mark.setPointer(null);
+	size--;
+	return removed;
     }
 
     //removes an element from a specified location
-    public boolean remove(int value, int location){
-	return false;
+    public int remove(int location){
+	index = start;
+	LNode skip, skipped;
+	for(int i = 0; i < location - 1; i++){
+	    index = index.getPointer();
+	}
+	skipped = index.getPointer();
+	skip = skipped.getPointer();
+	index.setPointer(skip);
+	
+	return skipped.getValue();
     }
 
     //returns the size of the Linked List
+    //TESTED
     public int size(){
-	int size;
-
 	return size;
     }
 	
     //returns the data at a single node
-    public int get(int index){
+    //First index is zero
+    //TESTED
+    public int get(int indx){
+	if(indx < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	if(indx >= size){
+	    throw new IndexOutOfBoundsException();
+	}
+	index = start;
+	for(int i = 0; i < indx; i++){
+	    index = index.getPointer();
+	}
+	return index.getValue();
+    }
 
-	return -1;
+    //sets an index to a specified value and returns the old one
+    public int set(int newValue, int indx){
+	index = start;
+	for(int i = 0; i < indx; i++){
+	    index = index.getPointer();
+	}
+	int old = index.getValue();
+	index.setValue(newValue);
+	return old;
     }
     
     //ToString method prints out the list
     public String toString(){
 	String output = "{";
 	index = start;
-	for(int i = 0; i < size; i++){
+
+	if(size == 0){
+	    System.out.println("null");
+	    return null;
+	}
+	
+	for(int i = 0; i < size - 1; i++){
 	    output = output + index.getValue() + ", ";
 	    index = index.getPointer();
 	}
-	output = output + index.getPointer() + "}";
+	output = output + index.getValue() + "}";
 	System.out.println(output);
 	return output;
     }
 
-
+    //
+    public Iterator<Integer> iterator(){
+	return new MyLinkedListIterator(this);
+    }
+    
     //--------------------------------------------------------------------------------------
 
     //inner iterator class
     public class MyLinkedListIterator implements Iterator<Integer>{
 
+	public MyLinkedList listIt;
+	public LNode index;
+
 	//Iterator constructor
-	public Iterator<LNode> interator(){
-	    return new MyLinkedListIterator(this);
+	public MyLinkedListIterator(MyLinkedList list){
+	    listIt = list;
+	    index = listIt.start;
 	}
 	
-	//accesses next index for linked list
-	public LNode next(){
-	    return getPointer();
+	//accesses value at the next index for linked list
+	public Integer next(){
+	    try{
+		index = index.getPointer();
+		return index.getValue();
+	    }catch(NoSuchElementException e){
+		return 0;
+	    }
 	}
 
 	//returns true if a given node points to another node
 	public boolean hasNext(){
-	    return (next != null);
+	    return (next() != null);
 	}
 
 	//unused, throws unsupported operation exception
 	public void remove(){
 	    throw new UnsupportedOperationException();
-	    //throws unsupported operation exception
 	}
     }
     
@@ -139,12 +191,24 @@ public class MyLinkedList implements Iterable<Integer>{
     //MAIN
     public static void main(String[]arrgs){
 	MyLinkedList list1 = new MyLinkedList();
-	list1.toString();
-	list1.add(1);
-	list1.toString();
+
+	list1.add(10);
+	//list1.toString();
+	list1.add(3);	
+	list1.add(58);
 	list1.add(2);
+	list1.add(534);
 	list1.toString();
-	list1.add(3);
+	list1.add(5);
+	list1.add(6);
+	list1.add(9);
+	list1.add(789);
+	list1.add(78);
+	list1.toString();
+
+	list1.set(4, 10000);
+	list1.toString();
+	list1.set(2, 11111);
 	list1.toString();
     }
 }
