@@ -61,6 +61,7 @@ public class MyLinkedList implements Iterable<Integer>{
 	skip = skipped.getPointer();
 	index.setPointer(skip);
 	
+	size--;
 	return skipped.getValue();
     }
 
@@ -88,7 +89,7 @@ public class MyLinkedList implements Iterable<Integer>{
     }
 
     //sets an index to a specified value and returns the old one
-    public int set(int newValue, int indx){
+    public int set(int indx, int newValue){
 	index = start;
 	for(int i = 0; i < indx; i++){
 	    index = index.getPointer();
@@ -193,22 +194,36 @@ public class MyLinkedList implements Iterable<Integer>{
 	MyLinkedList list1 = new MyLinkedList();
 
 	list1.add(10);
-	//list1.toString();
 	list1.add(3);	
 	list1.add(58);
 	list1.add(2);
 	list1.add(534);
-	list1.toString();
 	list1.add(5);
 	list1.add(6);
 	list1.add(9);
 	list1.add(789);
 	list1.add(78);
-	list1.toString();
-
+	System.out.println(list1.size());//
+	list1.toString();//
 	list1.set(4, 10000);
-	list1.toString();
+	list1.toString();//
 	list1.set(2, 11111);
-	list1.toString();
+	list1.toString();//
+	list1.set(0, 222222);
+	list1.toString();//
+	list1.set(9, 3333333);
+	list1.toString();//
+	list1.remove(2);
+	list1.toString();//
+	list1.add(345);
+	list1.add(345);
+	list1.add(345);
+	list1.toString();//
+	list1.remove(4);
+	list1.toString();//
+	list1.set(10, 4444444);
+	list1.toString();//
+	list1.set(8, 555555);
+	list1.toString();//
     }
 }
