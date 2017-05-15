@@ -15,10 +15,10 @@ public class MyLinkedList implements Iterable<Integer>{
     //METHODS---------------------------------------------------------------------------------
 
     //add method (adds to end)
-    //Tested
+    //TESTED with double
     public int add(int value){
 	index = start;
-	LNode newNode = new LNode(null, value);
+	LNode newNode = new LNode(null, null, value);
 	if(size == 0){
 	    start = newNode;
 	    size++;
@@ -28,13 +28,52 @@ public class MyLinkedList implements Iterable<Integer>{
 		index = index.getPointer();
 	    }	
 	    index.setPointer(newNode);
+	    newNode.setPrevious(index);
 	    size++;
 	    return value;
 	}
     }
 
+    //Adds a value at a given index
+    public void add(int indx, int newValue){
+	index = start;
+	if(indx < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	if(indx > size){
+	    throw new IndexOutOfBoundsException();
+	}
+	LNode newNode = new LNode(null, null, newValue);
+	if(size == 0){
+	    start = newNode;
+	    size++;
+	}else if(indx == 0){
+	    start = newNode;
+	    start.setPointer(index);
+	    index.setPrevious(start);
+	    size++;
+	}else if(indx == size){
+	    for(int i = 0; i < size - 1; i++){
+		index = index.getPointer();
+	    }
+	    index.setPointer(newNode);
+	    newNode.setPrevious(index);
+	    size++;
+	}else{
+	    for(int i = 0; i < indx; i++){
+		index = index.getPointer();
+	    }
+	    LNode temp = index.getPointer();
+	    index.setPointer(newNode);
+	    newNode.setPrevious(index);
+	    newNode.setPointer(temp);
+	    temp.setPrevious(newNode);
+	    size++;
+	}
+    }
+
     //removes an element from the end of the linked list
-    //Tested
+    //TESTED
     public int remove(){
 	LNode mark = start;
 	int removed;
@@ -51,16 +90,37 @@ public class MyLinkedList implements Iterable<Integer>{
     }
 
     //removes an element from a specified location
+    //TESTED
     public int remove(int location){
 	index = start;
+	if(location < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	if(location >= size){
+	    throw new IndexOutOfBoundsException();
+	}
 	LNode skip, skipped;
+	if(location == 0){
+	    skipped = start;
+	    start = start.getPointer();
+	    size--;
+	    return skipped.getValue();
+	}
+	if(location == (size() - 1)){
+	    for(int i = 0; i < size() - 2; i++){
+		index = index.getPointer();
+	    }
+	    skipped = index.getPointer();
+	    index.setPointer(null);
+	    size--;
+	    return skipped.getValue();
+	}
 	for(int i = 0; i < location - 1; i++){
 	    index = index.getPointer();
 	}
 	skipped = index.getPointer();
 	skip = skipped.getPointer();
 	index.setPointer(skip);
-	
 	size--;
 	return skipped.getValue();
     }
@@ -78,7 +138,7 @@ public class MyLinkedList implements Iterable<Integer>{
 	if(indx < 0){
 	    throw new IndexOutOfBoundsException();
 	}
-	if(indx >= size){
+	if(indx > size){
 	    throw new IndexOutOfBoundsException();
 	}
 	index = start;
@@ -90,6 +150,12 @@ public class MyLinkedList implements Iterable<Integer>{
 
     //sets an index to a specified value and returns the old one
     public int set(int indx, int newValue){
+	if(indx < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	if(indx >= size){
+	    throw new IndexOutOfBoundsException();
+	}
 	index = start;
 	for(int i = 0; i < indx; i++){
 	    index = index.getPointer();
@@ -164,10 +230,12 @@ public class MyLinkedList implements Iterable<Integer>{
 	//variables
 	int value;//starts off null
 	LNode pointer;//if pointer is null, it is the end of the list
+	LNode previous;//if previous is null, it's the beginning of the list;
 	
 	//Constructor for node
-	private LNode(LNode point, int val){
+	private LNode(LNode point,LNode prev, int val){
 	    pointer = point;
+	    previous = prev;
 	    value = val;
 	}
 
@@ -178,6 +246,9 @@ public class MyLinkedList implements Iterable<Integer>{
 	public LNode getPointer(){
 	    return pointer;
 	}
+	public LNode getPrevious(){
+	    return previous;
+	}
 
 	//Mutator Methods
 	public void setValue(int num){
@@ -186,6 +257,9 @@ public class MyLinkedList implements Iterable<Integer>{
 	public void setPointer(LNode n){
 	    pointer = n;
 	}
+	public void setPrevious(LNode prev){
+	    previous = prev;
+	}
     }
     //END OF LNODE INNER CLASS
     
@@ -193,37 +267,25 @@ public class MyLinkedList implements Iterable<Integer>{
     public static void main(String[]arrgs){
 	MyLinkedList list1 = new MyLinkedList();
 
-	list1.add(10);
-	list1.add(3);	
-	list1.add(58);
+	list1.add(1);
 	list1.add(2);
-	list1.add(534);
+	list1.add(3);
+	list1.add(4);
 	list1.add(5);
-	list1.add(6);
-	list1.add(9);
-	list1.add(789);
-	list1.add(78);
-	System.out.println(list1.size());//
-	list1.toString();//
-	list1.set(4, 10000);
-	list1.toString();//
-	list1.set(2, 11111);
-	list1.toString();//
-	list1.set(0, 222222);
-	list1.toString();//
-	list1.set(9, 3333333);
-	list1.toString();//
-	list1.remove(2);
-	list1.toString();//
-	list1.add(345);
-	list1.add(345);
-	list1.add(345);
-	list1.toString();//
-	list1.remove(4);
-	list1.toString();//
-	list1.set(10, 4444444);
-	list1.toString();//
-	list1.set(8, 555555);
-	list1.toString();//
+	list1.toString();
+
+	MyLinkedList list2 = new MyLinkedList();
+	list2.add(0, 1);
+	//	System.out.println(list2.get(0));
+	list2.add(1, 2);
+	list2.add(2, 3);
+	list2.add(3, 4);
+	list2.add(4, 5);
+	list2.add(2, 666);
+	list2.toString();
+	System.out.println(list2.get(5));
+	list2.add(5, 7);
+	list2.add(0, 666);
+	list2.toString();
     }
 }

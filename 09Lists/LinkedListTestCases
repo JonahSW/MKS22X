@@ -1,3 +1,37 @@
+
+	list1.add(10);
+	list1.add(3);	
+	list1.add(58);
+	list1.add(2);
+	list1.add(534);
+	list1.add(5);
+	list1.add(6);
+	list1.add(9);
+	list1.add(789);
+	list1.add(78);
+	System.out.println(list1.size());//
+	list1.toString();//
+	list1.set(4, 10000);
+	list1.toString();//
+	list1.set(2, 11111);
+	list1.toString();//
+	list1.set(0, 222222);
+	list1.toString();//
+	list1.set(9, 3333333);
+	list1.toString();//
+	list1.remove(2);
+	list1.toString();//
+	list1.add(345);
+	list1.add(345);
+	list1.add(345);
+	list1.toString();//
+	list1.remove(4);
+	list1.toString();//
+	list1.set(10, 4444444);
+	list1.toString();//
+	list1.set(8, 555555);
+	list1.toString();//
+	
 MyLinkedList list1 = new MyLinkedList();
 	list1.add(0);
 	list1.add(1);
@@ -186,3 +220,41 @@ MyLinkedList list1 = new MyLinkedList();
 	list1.remove();
 	list1.toString();
 	System.out.println(list1.size());
+	list1.add(1);
+	list1.toString();
+	list1.add(2);
+	list1.add(4);
+	System.out.println(list1.get(1));
+	System.out.println(list1.remove(1));
+	list1.toString();
+	list1.add(3);
+	list1.toString();
+	list1.remove(2);
+	System.out.println("the buck stops here");
+	list1.toString();
+	System.out.println(list1.get(0));
+	list1.remove(0);
+	list1.toString();
+	System.out.println(list1.get(0));
+	list1.remove(0);
+	list1.toString();
+
+	list1.add(1);
+	list1.add(2);
+	list1.add(3);
+	list1.add(4);
+	list1.toString();
+	System.out.println(list1.remove(0));
+	list1.toString();
+	list1.add(5);
+	list1.toString();
+	System.out.println(list1.remove(3));
+	list1.toString();
+	list1.add(6);
+	list1.toString();
+	System.out.println(list1.remove(2));
+	list1.toString();
+	list1.add(7);
+	list1.toString();
+	//System.out.println(list1.remove(4));//throws exception
+	//list1.toString();
