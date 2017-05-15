@@ -67,6 +67,14 @@ public class MyLinkedList implements Iterable<Integer>{
 	    index.setPointer(newNode);
 	    newNode.setPrevious(index);
 	    newNode.setPointer(temp);
+	    //
+	    System.out.println("--------------------------trouble");
+	    MyLinkedList hi = new MyLinkedList();
+	    hi.start = temp;
+	    hi.toString();
+	    System.out.println(temp.getPrevious());
+	    System.out.println("-----------------------------trouble");
+	    //
 	    temp.setPrevious(newNode);
 	    size++;
 	}
@@ -266,7 +274,6 @@ public class MyLinkedList implements Iterable<Integer>{
     //MAIN
     public static void main(String[]arrgs){
 	MyLinkedList list1 = new MyLinkedList();
-
 	list1.add(1);
 	list1.add(2);
 	list1.add(3);
@@ -283,7 +290,7 @@ public class MyLinkedList implements Iterable<Integer>{
 	list2.add(4, 5);
 	list2.add(2, 666);
 	list2.toString();
-	System.out.println(list2.get(5));
+	System.out.println(list2.get(5) + "----------------------------------------");
 	list2.add(5, 7);
 	list2.add(0, 666);
 	list2.toString();

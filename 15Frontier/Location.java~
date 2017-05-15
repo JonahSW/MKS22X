@@ -1,0 +1,5 @@
+public class Location implements Comparable<Location>{
+    public int row, col;
+    public int distanceToStart, distanceToGoal;
+    
+}
