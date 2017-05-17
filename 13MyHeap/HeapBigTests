@@ -17,3 +17,18 @@
 	test1.pushForward(5);
 	test1.toString();
 	//*/
+
+	System.out.println("----------------------------------------------------------");
+	test1.add("4");
+	test1.toString();
+	test1.add("9");
+	test1.toString();
+	test1.add("3");
+	test1.toString();
+	test1.add("12");
+	test1.toString();
+	test1.add("54");
+	test1.toString();
+	test1.add("79");
+	test1.toString();
+	test1.add("32");

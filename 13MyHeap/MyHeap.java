@@ -7,51 +7,59 @@ public class MyHeap{
     //VARIABLES
     public String[] arry;
     public int size;
-    
+    public boolean max = true;
     //CONSTRUCTOR
+    //default max heap
     public MyHeap(){
 	arry = new String[11];
 	size = 0;
 	arry[0] = "" + size;
     }
 
-    //temporary testing constructor
-    public MyHeap(String[] ary){
-	arry = ary;
-	size = ary.length - 1;
+    //Max or Min Heap    //max heap when max is true
+    public MyHeap(boolean max){
+	arry = new String[11];
+	size = 0;//size is 0 when array has an int at start, size is # elements in heap, excluding the size
 	arry[0] = "" + size;
+	this.max = max;
     }
 
     //METHODS
     //adds a String to the top of the heap, returns false if it fails
     public boolean add(String str){
-	
-	if(size == arry.length){
+	size++;
+	arry[0] = size + "";
+	if(size >= arry.length - 1){
 	    resize();
 	}
-
-	size++;
-	arry[size] = str;
-
 	if(size == 1){
 	    arry[size] = str;
 	    return true;
 	}
+	arry[size] = str;
 	
 	int tracker = size;
-	while(str.compareTo(peek(tracker)) > 0){
-	    tracker = pushForward(size);
+	//the problem is here, tracker is not being used properly
+	if(max){
+	    while(str.compareTo(peek(tracker)) > 0){
+		tracker = pushForward(size);
+	    }
+	}else{
+	    while(str.compareTo(peek(tracker)) > 0){
+		tracker = pushBack(size);
+	    }
 	}
-
 	//used for testing
 	return false;
     }
 
     //Removes a String from the top of the heap, returns false if it fails
     public boolean remove(){
+	String out = arry[1];
 
-
+	//Code to push the next highest or lowest back into place
 	size--;
+	arry[0] = size + "";
 	return false;
     }
 
@@ -64,6 +72,7 @@ public class MyHeap{
 	for(int i = 1; i < arry.length; i++){
 	    newArry[i] = arry[i];
 	}
+	arry = newArry;
     }
 
     //Returns the string at a given index
@@ -79,10 +88,10 @@ public class MyHeap{
 	String temp;
 
 	try{
-	temp = arry[parentInt];
-	arry[parentInt] = arry[childInt];
-	arry[childInt] = temp;
-	}catch{(IndexOutOfBoundsException() e)
+	    temp = arry[parentInt];
+	    arry[parentInt] = arry[childInt];
+	    arry[childInt] = temp;
+	}catch(IndexOutOfBoundsException e){
 	    	}
 	return parentInt;
     }
@@ -120,14 +129,21 @@ public class MyHeap{
 
     //MAIN
     public static void main(String[]args){
+	MyHeap test1 = new MyHeap();
+	test1.toString();
+	test1.add("1");
+	test1.toString();
+	test1.add("2");
+	test1.toString();
+	test1.add("3");
+	test1.add("4");
+	test1.add("5");
+	test1.add("6");
+	test1.add("7");
+	test1.add("8");
+	test1.add("9");
+	test1.toString();
 
-
-	String[] stuff = new String[]{null,"7","6","5","4","3","2","1","0","-1","-2","-3","-4","-5","-6","-7"};
-	MyHeap test2 = new MyHeap(stuff);
-	test2.toString();
-	test2.pushForward(4);
-	test2.toString();
-	
 
 				  
 	//END MAIN
