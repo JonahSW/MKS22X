@@ -33,23 +33,18 @@ public class MyHeap{
 	    resize();
 	}
 	if(size == 1){
-	    arry[size] = str;
+	    arry[1] = str;
 	    return true;
 	}
 	arry[size] = str;
 	
-	int tracker = size;
+	int tracker = size / 2;
 	//the problem is here, tracker is not being used properly
-	if(max){
-	    while(str.compareTo(peek(tracker)) > 0){
-		tracker = pushForward(size);
-	    }
-	}else{
-	    while(str.compareTo(peek(tracker)) > 0){
-		tracker = pushBack(size);
-	    }
-	}
+	//System.out.print("The size of the array is " +  size);
+	//System.out.println(" and the data at node size is " + peek(size));
+	//System.out.println("compareValue " + str.compareTo(peek(tracker)));
 	//used for testing
+
 	return false;
     }
 
@@ -82,7 +77,8 @@ public class MyHeap{
 
     //switches a root with it parent
     //returns the new index of the root
-    public int pushForward(int r){
+    public int pushUp(int r){
+	System.out.println("I just pushed up!");
 	int childInt = r;
 	int parentInt = r / 2;
 	String temp;
@@ -98,24 +94,20 @@ public class MyHeap{
 
     //switches a parent with its root
     //returns the new index of the parent
-    public int pushBack(int c){
+    public int pushDown(int c){
 	int parentInt = c;
 	int childInt = -1;
 	String temp;
 
-	if(arry[c * 2 + 1] != null){
-	    childInt = c * 2 + 1;
-	}else{
-	    childInt = c * 2;
-	}
-	
+	childInt = c * 2;
+		
 	temp = arry[parentInt];
 	arry[parentInt] = arry[childInt];
 	arry[childInt] = temp;
 	return childInt;
     }
 
-    //
+    //Overrides toString() method
     public String toString(){
 	String out = "{";
 	for(int i = 0; i < arry.length - 1; i++){
@@ -127,14 +119,21 @@ public class MyHeap{
 	return out;
     }
 
+    //custom toString method
+    public void toStringPyramid(){
+	int pyramidLevel = 1;
+	//int spaceIterate = 
+    }
+
     //MAIN
     public static void main(String[]args){
-	MyHeap test1 = new MyHeap();
-	test1.toString();
+	MyHeap test1 = new MyHeap(false);
+	System.out.println("");
+	//test1.toString();
 	test1.add("1");
-	test1.toString();
+	//test1.toString();
 	test1.add("2");
-	test1.toString();
+	//test1.toString();
 	test1.add("3");
 	test1.add("4");
 	test1.add("5");
@@ -144,7 +143,27 @@ public class MyHeap{
 	test1.add("9");
 	test1.toString();
 
-
+	/*
+	System.out.println(test1.peek(1));
+	System.out.println(test1.peek(2));
+	System.out.println(test1.peek(3));
+	System.out.println(test1.peek(4));
+	System.out.println(test1.peek(5));
+	System.out.println(test1.peek(6));
+	System.out.println(test1.peek(7));
+	System.out.println(test1.peek(8));
+	System.out.println(test1.peek(9));
+	*/
+	System.out.println("");
+	System.out.println("add(3)");
+	test1.add("3");
+	test1.toString();
+	System.out.println("");
+	System.out.println("");
+	
+	System.out.println("add(3)");
+	test1.add("0");
+	test1.toString();
 				  
 	//END MAIN
     }

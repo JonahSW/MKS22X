@@ -32,3 +32,14 @@
 	test1.add("79");
 	test1.toString();
 	test1.add("32");
+
+
+	test1.pushDown(1);
+	test1.toString();
+
+	test1.pushUp(3);
+	test1.toString();
+
+	test1.pushDown(1);
+	test1.pushUp(3);
+	test1.toString();
