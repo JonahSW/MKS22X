@@ -43,3 +43,26 @@
 	test1.pushDown(1);
 	test1.pushUp(3);
 	test1.toString();
+
+	/*
+	System.out.println(test1.peek(1));
+	System.out.println(test1.peek(2));
+	System.out.println(test1.peek(3));
+	System.out.println(test1.peek(4));
+	System.out.println(test1.peek(5));
+	System.out.println(test1.peek(6));
+	System.out.println(test1.peek(7));
+	System.out.println(test1.peek(8));
+	System.out.println(test1.peek(9));
+	
+	System.out.println("");
+	System.out.println("add(3)");
+	test1.add("3");
+	test1.toString();
+	System.out.println("");
+	System.out.println("");
+	
+	System.out.println("add(3)");
+	test1.add("0");
+	test1.toString();
+	*/

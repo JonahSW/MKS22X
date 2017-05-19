@@ -15,7 +15,7 @@ public class MyLinkedList implements Iterable<Integer>{
     //METHODS---------------------------------------------------------------------------------
 
     //add method (adds to end)
-    //TESTED with double
+    //TESTED with double links
     public int add(int value){
 	index = start;
 	LNode newNode = new LNode(null, null, value);
@@ -35,6 +35,7 @@ public class MyLinkedList implements Iterable<Integer>{
     }
 
     //Adds a value at a given index
+    //TESTED with double links
     public void add(int indx, int newValue){
 	index = start;
 	if(indx < 0){
@@ -60,28 +61,20 @@ public class MyLinkedList implements Iterable<Integer>{
 	    newNode.setPrevious(index);
 	    size++;
 	}else{
-	    for(int i = 0; i < indx; i++){
+	    for(int i = 0; i < indx - 1; i++){
 		index = index.getPointer();
 	    }
 	    LNode temp = index.getPointer();
 	    index.setPointer(newNode);
 	    newNode.setPrevious(index);
 	    newNode.setPointer(temp);
-	    //
-	    System.out.println("--------------------------trouble");
-	    MyLinkedList hi = new MyLinkedList();
-	    hi.start = temp;
-	    hi.toString();
-	    System.out.println(temp.getPrevious());
-	    System.out.println("-----------------------------trouble");
-	    //
 	    temp.setPrevious(newNode);
 	    size++;
 	}
     }
 
     //removes an element from the end of the linked list
-    //TESTED
+    //TESTED tested with double links
     public int remove(){
 	LNode mark = start;
 	int removed;
@@ -98,7 +91,7 @@ public class MyLinkedList implements Iterable<Integer>{
     }
 
     //removes an element from a specified location
-    //TESTED
+    //TESTED with double links
     public int remove(int location){
 	index = start;
 	if(location < 0){
@@ -134,19 +127,19 @@ public class MyLinkedList implements Iterable<Integer>{
     }
 
     //returns the size of the Linked List
-    //TESTED
+    //TESTED with double links
     public int size(){
 	return size;
     }
 	
     //returns the data at a single node
     //First index is zero
-    //TESTED
+    //TESTED with double links
     public int get(int indx){
 	if(indx < 0){
 	    throw new IndexOutOfBoundsException();
 	}
-	if(indx > size){
+	if(indx >=size){
 	    throw new IndexOutOfBoundsException();
 	}
 	index = start;
@@ -157,6 +150,7 @@ public class MyLinkedList implements Iterable<Integer>{
     }
 
     //sets an index to a specified value and returns the old one
+    //TESTED with double links
     public int set(int indx, int newValue){
 	if(indx < 0){
 	    throw new IndexOutOfBoundsException();
@@ -174,6 +168,7 @@ public class MyLinkedList implements Iterable<Integer>{
     }
     
     //ToString method prints out the list
+    //TESTED with double links
     public String toString(){
 	String output = "{";
 	index = start;
@@ -192,7 +187,7 @@ public class MyLinkedList implements Iterable<Integer>{
 	return output;
     }
 
-    //
+    //returns an iterator over a doubly linked list
     public Iterator<Integer> iterator(){
 	return new MyLinkedListIterator(this);
     }
@@ -280,19 +275,5 @@ public class MyLinkedList implements Iterable<Integer>{
 	list1.add(4);
 	list1.add(5);
 	list1.toString();
-
-	MyLinkedList list2 = new MyLinkedList();
-	list2.add(0, 1);
-	//	System.out.println(list2.get(0));
-	list2.add(1, 2);
-	list2.add(2, 3);
-	list2.add(3, 4);
-	list2.add(4, 5);
-	list2.add(2, 666);
-	list2.toString();
-	System.out.println(list2.get(5) + "----------------------------------------");
-	list2.add(5, 7);
-	list2.add(0, 666);
-	list2.toString();
     }
 }

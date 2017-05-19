@@ -1,4 +1,38 @@
 
+	MyLinkedList list1 = new MyLinkedList();
+	MyLinkedList list2 = new MyLinkedList();
+	list2.add(0, 1);
+	//	System.out.println(list2.get(0));
+	///*
+	list2.add(1, 2);
+	list2.add(2, 3);
+	list2.add(3, 4);
+	list2.add(4, 5);
+	list2.add(0, 0);
+	list2.add(0, -1);
+	list2.toString();
+	System.out.println("------------------------------------------------");
+	list2.add(1, 7);
+	list2.toString();
+	list2.add(1, 8);
+	list2.toString();
+	list2.add(7, 2);
+	list2.add(3, 2342);
+	list2.add(5, 46);
+	list2.toString();
+	list2.add(0, -111);
+	list2.add(list2.size(), 99999999);
+	list2.toString();
+	//*/
+	list2.remove(list2.size() - 1);
+	list2.toString();
+	list2.remove(0);
+	list2.toString();
+	list2.remove(4);
+	list2.remove(2);
+	list2.toString();
+
+
 	list1.add(10);
 	list1.add(3);	
 	list1.add(58);
@@ -9,6 +43,39 @@
 	list1.add(9);
 	list1.add(789);
 	list1.add(78);
+	
+	list1.add(10);
+	list1.add(3);	
+	list1.add(58);
+	list1.add(2);
+	list1.add(534);
+	list1.add(5);
+	list1.add(6);
+	list1.add(9);
+	list1.add(789);
+	list1.add(78);
+	
+	list1.remove();
+	list1.remove();
+	list1.toString();
+	list1.remove();
+	list1.remove();
+	list1.remove();
+	list1.toString();
+	list1.remove();
+
+
+	list1.set(0, 111);
+	list1.toString();
+	list1.set(4, 555);
+	list1.toString();
+	list1.set(3, 444);
+	list1.toString();
+	list1.set(1, 222);
+	list1.toString();
+	list1.set(5, 666);
+	list1.toString();
+	
 	System.out.println(list1.size());//
 	list1.toString();//
 	list1.set(4, 10000);
@@ -32,7 +99,7 @@
 	list1.set(8, 555555);
 	list1.toString();//
 	
-MyLinkedList list1 = new MyLinkedList();
+	list1 = new MyLinkedList();
 	list1.add(0);
 	list1.add(1);
 	list1.add(2);
@@ -53,9 +120,9 @@ MyLinkedList list1 = new MyLinkedList();
 	System.out.println(list1.get(7));
 	System.out.println(list1.get(8));
 	System.out.println(list1.get(9));
-	System.out.println(list1.get(10));
+	//stem.out.println(list1.get(10));
 
-MyLinkedList list1 = new MyLinkedList();
+	list1 = new MyLinkedList();
 	//Test add and toString
 	//Added tests of size()
 	list1.toString();
@@ -119,7 +186,7 @@ MyLinkedList list1 = new MyLinkedList();
 	list1.toString();
 	System.out.println(list1.size());
 	
-	MyLinkedList list1 = new MyLinkedList();
+	list1 = new MyLinkedList();
 	list1.toString();
 	list1.add(0);
 	list1.toString();
