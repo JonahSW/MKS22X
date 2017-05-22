@@ -189,19 +189,19 @@ public class MyLinkedList implements Iterable<Integer>{
 
     //returns an iterator over a doubly linked list
     public Iterator<Integer> iterator(){
-	return new MyLinkedListIterator(this);
+	return new LinkedListIterator(this);
     }
     
     //--------------------------------------------------------------------------------------
 
     //inner iterator class
-    public class MyLinkedListIterator implements Iterator<Integer>{
+    public class LinkedListIterator implements Iterator<Integer>{
 
 	public MyLinkedList listIt;
 	public LNode index;
 
 	//Iterator constructor
-	public MyLinkedListIterator(MyLinkedList list){
+	public LinkedListIterator(MyLinkedList list){
 	    listIt = list;
 	    index = listIt.start;
 	}
@@ -211,14 +211,14 @@ public class MyLinkedList implements Iterable<Integer>{
 	    try{
 		index = index.getPointer();
 		return index.getValue();
-	    }catch(NoSuchElementException e){
+	    }catch(NullPointerException e){
 		return 0;
 	    }
 	}
 
 	//returns true if a given node points to another node
 	public boolean hasNext(){
-	    return (next() != null);
+	    return (next() == null);
 	}
 
 	//unused, throws unsupported operation exception
@@ -275,5 +275,10 @@ public class MyLinkedList implements Iterable<Integer>{
 	list1.add(4);
 	list1.add(5);
 	list1.toString();
+	
+	for(int node : list1){
+	    System.out.println(node + " ");
+	}
+
     }
 }
