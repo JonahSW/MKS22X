@@ -208,17 +208,19 @@ public class MyLinkedList implements Iterable<Integer>{
 	
 	//accesses value at the next index for linked list
 	public Integer next(){
-	    try{
+	    int x = 0;
+	    if(hasNext()){
+		x = index.getValue();
 		index = index.getPointer();
-		return index.getValue();
-	    }catch(NullPointerException e){
-		return 0;
+		return x;
+	    }else{
+		throw new NoSuchElementException();
 	    }
 	}
 
 	//returns true if a given node points to another node
 	public boolean hasNext(){
-	    return (next() == null);
+	    return (index != null);
 	}
 
 	//unused, throws unsupported operation exception
@@ -277,8 +279,50 @@ public class MyLinkedList implements Iterable<Integer>{
 	list1.toString();
 	
 	for(int node : list1){
-	    System.out.println(node + " ");
+	    System.out.print(node + ", ");
 	}
+	System.out.println();
 
+	list1.add(1);
+	list1.add(72);
+	list1.add(83);
+	list1.add(504);
+	list1.add(5);
+	list1.add(1);
+	list1.add(2);
+	list1.add(93);
+	list1.add(4);
+	list1.add(55);
+	list1.add(1);
+	list1.add(2);
+	list1.add(33);
+	list1.add(4);
+	list1.add(5);
+	list1.add(14);
+	list1.add(2);
+	list1.add(35);
+	list1.add(4);
+	list1.add(5);
+	list1.toString();
+
+	for(int node : list1){
+	    System.out.print(node + 1);
+	}
+	System.out.println();
+	list1.toString();
+
+	MyLinkedList list2 = new MyLinkedList();
+	for(int node : list2){
+	    System.out.print(node + 1);
+	}
+	System.out.println();
+	list2.toString();
+
+	list2.add(1);
+	for(int node : list2){
+	    System.out.print(node + 1);
+	}
+	System.out.println();
+	list2.toString();
     }
 }

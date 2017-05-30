@@ -325,3 +325,58 @@
 	list1.toString();
 	//System.out.println(list1.remove(4));//throws exception
 	//list1.toString();
+
+MyLinkedList list1 = new MyLinkedList();
+	list1.add(1);
+	list1.add(2);
+	list1.add(3);
+	list1.add(4);
+	list1.add(5);
+	list1.toString();
+	
+	for(int node : list1){
+	    System.out.print(node + ", ");
+	}
+	System.out.println();
+
+	list1.add(1);
+	list1.add(72);
+	list1.add(83);
+	list1.add(504);
+	list1.add(5);
+	list1.add(1);
+	list1.add(2);
+	list1.add(93);
+	list1.add(4);
+	list1.add(55);
+	list1.add(1);
+	list1.add(2);
+	list1.add(33);
+	list1.add(4);
+	list1.add(5);
+	list1.add(14);
+	list1.add(2);
+	list1.add(35);
+	list1.add(4);
+	list1.add(5);
+	list1.toString();
+
+	for(int node : list1){
+	    System.out.print(node + 1);
+	}
+	System.out.println();
+	list1.toString();
+
+	MyLinkedList list2 = new MyLinkedList();
+	for(int node : list2){
+	    System.out.print(node + 1);
+	}
+	System.out.println();
+	list2.toString();
+
+	list2.add(1);
+	for(int node : list2){
+	    System.out.print(node + 1);
+	}
+	System.out.println();
+	list2.toString();
