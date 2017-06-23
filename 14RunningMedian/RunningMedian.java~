@@ -1,0 +1,18 @@
+public class RunningMedian{
+
+    //VARIABLES
+    private int size;
+    private double median;
+    private MyHeap bottom, top;
+    
+    //CONSTRUCTOR
+
+    //METHODS
+
+    //MAIN
+    public static void main(String[]args){
+
+    }
+    //END MAIN
+}
+//END RUNNING MEDIAN
